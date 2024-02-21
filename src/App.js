@@ -4,7 +4,7 @@ import Dashboard from './Pages/dashboard';
 import Layout from './Pages/main/layout';
 import ShoppingCart from './Pages/Shopping-Cart';
 import Routes from './Setup/routes-manager/routes.json';
-
+import Timer from './Pages/Timer';
 function App() {
   return (
     <Router>
@@ -17,6 +17,9 @@ function App() {
             </Route>
             <Route exact path={Routes.shoppingApp}>
               <ShoppingCart />
+            </Route>
+            <Route exact path={Routes.timer}>
+              <Timer />
             </Route>
           </Switch>
         </div>

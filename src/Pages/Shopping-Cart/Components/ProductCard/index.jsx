@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+// import Slider from 'react-slick';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+
 
 
 function ProductCard({ product, addToCart }) {
@@ -22,15 +25,21 @@ function ProductCard({ product, addToCart }) {
         }
     };
 
+    const Settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 2
+    }
+
     return (
         <div className="product-card">
-            <Carousel>
-                {product.image.map(item => {
-                    return <Carousel.Item>
-                        <img src={item} alt={product.name} />
-                    </Carousel.Item>
-                })}
-            </Carousel>
+            {/* <Slider {...Settings}>
+                {product.image.map(item => (
+                    <img src={item} alt={product.name} />
+                ))}
+            </Slider> */}
 
             <h3>{product.name}</h3>
             <p>{`Price: $${product.price}`}</p>
