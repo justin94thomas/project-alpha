@@ -1,0 +1,16 @@
+{
+    "Content": [
+        {
+            "Name": "Shopping Cart",
+            "Routes": "/shopping-app"
+        },
+        {
+            "Name": "Timer",
+            "Routes": "/timer"
+        },
+        {
+            "Name": "Sneaker Shop",
+            "Routes": "/sneaker-shop"
+        }
+    ]
+}

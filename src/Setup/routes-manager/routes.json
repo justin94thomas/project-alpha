@@ -1,4 +1,6 @@
 {
     "dashboard": "/dashboard",
-    "shoppingApp": "/shopping-app"
+    "shoppingApp": "/shopping-app",
+    "timer": "/timer",
+    "sneakerShop": "/sneaker-shop"
 }
