@@ -1,5 +1,6 @@
 {
     "dashboard": "/dashboard",
     "shoppingApp": "/shopping-app",
-    "Timer": "Timer"
+    "timer": "/timer",
+    "sneakerShop": "/sneaker-shop"
 }

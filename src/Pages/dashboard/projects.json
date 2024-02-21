@@ -7,6 +7,10 @@
         {
             "Name": "Timer",
             "Routes": "/timer"
+        },
+        {
+            "Name": "Sneaker Shop",
+            "Routes": "/sneaker-shop"
         }
     ]
 }
