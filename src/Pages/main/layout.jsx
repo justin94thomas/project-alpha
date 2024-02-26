@@ -10,6 +10,8 @@ import Loader from '../../Components/Loader';
 import Dashboard from "../dashboard";
 import ShoppingCart from "../Shopping-Cart";
 import SneakerShop from "../Sneaker-Shop/index";
+import Marketplace from "../Marketplace";
+import ProductList from "../Marketplace/Components/Product";
 import Timer from "../Timer";
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +47,8 @@ function Layout() {
                                     <Route path={Routes.shoppingApp} component={ShoppingCart} />
                                     <Route path={Routes.timer} component={Timer} />
                                     <Route path={Routes.sneakerShop} component={SneakerShop} />
+                                    <Route path={Routes.marketplace} component={Marketplace} />
+                                    <Route path={Routes.marketplaceList} component={ProductList} />
                                 </Switch>
                             </Suspense>
                         </Box>

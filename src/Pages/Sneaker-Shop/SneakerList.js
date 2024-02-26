@@ -5,6 +5,7 @@ import { useSneakerContext } from '../../Context/SneakerContext';
 
 const SneakerList = () => {
     const { state } = useSneakerContext();
+    debugger
 
     return (
         <div>

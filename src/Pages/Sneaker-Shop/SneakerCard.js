@@ -25,7 +25,6 @@ const SneakerCard = ({ sneaker }) => {
     return (
         <div>
             <h3>{sneaker.name}</h3>
-            <p>{sneaker.description}</p>
             <p>${sneaker.price}</p>
             {isInCart ? (
                 <div>

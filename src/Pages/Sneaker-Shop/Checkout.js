@@ -9,7 +9,7 @@ const Checkout = () => {
     if (totalItems === 0) {
         return null; // Hide the component if the cart is empty
     }
-
+    debugger
     const totalPrice = state.cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (

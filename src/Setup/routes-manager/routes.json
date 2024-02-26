@@ -2,5 +2,7 @@
     "dashboard": "/dashboard",
     "shoppingApp": "/shopping-app",
     "timer": "/timer",
-    "sneakerShop": "/sneaker-shop"
+    "sneakerShop": "/sneaker-shop",
+    "marketplace": "/marketplace",
+    "marketplaceList": "/product"
 }

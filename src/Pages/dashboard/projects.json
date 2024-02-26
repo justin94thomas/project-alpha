@@ -11,6 +11,10 @@
         {
             "Name": "Sneaker Shop",
             "Routes": "/sneaker-shop"
+        },
+        {
+            "Name": "Marketplace",
+            "Routes": "/marketplace"
         }
     ]
 }
