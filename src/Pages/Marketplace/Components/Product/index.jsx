@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Grid, Box, Typography, makeStyles, useTheme, Checkbox } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import Carousel from 'react-bootstrap/Carousel';
 import MarketplaceData from '../data.json';
+import ProductCard from './Card';
+import { LuFilter } from "react-icons/lu";
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -27,17 +28,97 @@ const useStyles = makeStyles((theme) => ({
         height: '80px',
         width: '130px',
         cursor: 'pointer'
+    },
+    filterHead: {
+        minHeight: '56px',
+        alignItems: 'center',
+        display: 'flex',
+        fontSize: '16px',
+        fontWeight: 600,
     }
 }))
 
-const ProductList = () => {
+const Filter = ({ selectedProduct, setFilterData }) => {
     const classes = useStyles();
-    const { t } = useTranslation();
+    const [brands, setBrands] = useState([]);
+    const [selectedBrands, setSelectedBrands] = useState([]);
 
+    useEffect(() => {
+        let productType = selectedProduct?.name;
+        if (MarketplaceData[productType]) {
+            const uniqueBrands = [...new Set(MarketplaceData[productType].map(product => product.brand))];
+            setBrands(uniqueBrands);
+        }
+    }, [selectedProduct]);
+
+    const updateProduct = (e, brand) => {
+        let productType = selectedProduct?.name;
+        if (e.target.checked) {
+            const updatedBrands = [...selectedBrands, brand];
+            setSelectedBrands(updatedBrands);
+            const filteredList = MarketplaceData[productType].filter(product => updatedBrands.includes(product.brand));
+            setFilterData(filteredList);
+        } else {
+            const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
+            setSelectedBrands(updatedBrands);
+            const filteredList = MarketplaceData[productType].filter(product => updatedBrands.includes(product.brand));
+            setFilterData(filteredList);
+        }
+    };
 
     return (
-        <>Product List</>
+        <Box style={{ borderRight: '1px solid #eee', height: '100%' }}>
+            <div style={{ borderBottom: '1px solid #eee', }}>
+                <Typography varient={'p'} className={classes.filterHead}>Filter <LuFilter style={{ marginLeft: '4px' }} size={12} /></Typography>
+            </div>
+            <div style={{ marginTop: '30px' }}>
+                <Typography varient={'p'} style={{ fontWeight: 600 }}>Brand</Typography>
+                <div style={{ textAlign: 'left', marginTop: '12px' }}>
+                    {brands && brands.map(prod =>
+                        <Typography varient={'p'}><Checkbox style={{ color: '#0242E8' }} onChange={(e) => updateProduct(e, prod)} /> {prod}</Typography>
+                    )}
+                </div>
+            </div>
+            <div style={{ marginTop: '30px' }}>
+                <Typography varient={'p'} style={{ fontWeight: 600 }}>Price</Typography>
+            </div>
+        </Box>
     )
+}
+const ProductList = ({ selectedProduct }) => {
+    const classes = useStyles();
+    const { t } = useTranslation();
+    const [productData, setProductData] = useState([]);
+    const [filterData, setFilterData] = useState();
+
+
+    useEffect(() => {
+        if (selectedProduct && MarketplaceData) {
+            let productType = selectedProduct?.name;
+            const productData = MarketplaceData[productType] ? MarketplaceData[productType] : [];
+            setProductData(productData);
+        }
+        if (filterData) {
+            setProductData(filterData);
+        }
+    }, [MarketplaceData, filterData])
+
+
+    return (<>
+        <Grid container xs={12}>
+            <Grid item xs={2} style={{ height: '100vh' }}>
+                <Filter selectedProduct={selectedProduct} productData={productData} setFilterData={setFilterData} />
+            </Grid>
+            <Grid item xs={9}>
+                <Box>
+                    <Typography varient={'p'} className={classes.filterHead} style={{ marginLeft: 30 }}>{selectedProduct?.name} ({productData.length})</Typography>
+                </Box>
+                <Grid container xs={12} style={{ margin: '20px' }}>
+                    <ProductCard productData={productData} filterData={filterData} />
+                </Grid>
+            </Grid>
+        </Grid>
+    </>)
 }
 
 export default ProductList;

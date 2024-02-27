@@ -16,12 +16,14 @@
     "Sneakers": [
         {
             "id": 1,
-            "name": "Air Jordan 1 High",
+            "name": "Air Jordan I High G",
             "image": [
-                "https://static.glami.cz/img/329726041.png",
-                "https://i1.t4s.cz/products/1md30120553/on-running-challenger-jacket-682239-1md30120553.png"
+                "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/211d4d31-22dc-4792-aafd-70a6d32a4fdf/air-jordan-i-high-g-golf-shoes-qKzTBg.png",
+                "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/41fdbae1-2e65-456a-9388-fa08733c5eeb/air-jordan-i-high-g-golf-shoes-qKzTBg.png"
             ],
             "price": 16995,
+            "original": 20000,
+            "brand": "Nike",
             "color": [
                 "University Blue"
             ]
@@ -34,6 +36,8 @@
                 "https://static.nike.com/a/images/t_prod_sc/w_960,c_limit,f_auto/2be561ff-6cf5-44cc-89f5-ef3f7f02416a/terminator-high-black-and-light-pumice-fj4198-001-release-date.jpg"
             ],
             "price": 12795,
+            "original": 15000,
+            "brand": "Nike",
             "color": [
                 "Black and Light Pumice"
             ]
@@ -46,6 +50,7 @@
                 "https://static.nike.com/a/images/t_prod_sc/w_960,c_limit,f_auto/ff4d8989-b89a-4c34-8dda-3773092bd843/air-jordan-6-aqua-ct8529-004-release-date.jpg"
             ],
             "price": 18395,
+            "brand": "Nike",
             "color": [
                 "Aqua"
             ]
@@ -58,6 +63,8 @@
                 "https://static.nike.com/a/images/t_prod_sc/w_640,c_limit,f_auto/07195bee-d289-4af1-8672-687a418503b1/kobe-4-protro-black-fq3544-001-release-date.jpg"
             ],
             "price": 16995,
+            "brand": "Adidas",
+            "original": 19500,
             "color": [
                 "Black"
             ]

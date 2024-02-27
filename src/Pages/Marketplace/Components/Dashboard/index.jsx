@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, useTheme } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Carousel from 'react-bootstrap/Carousel';
 import MarketplaceData from '../data.json';
 import { useHistory, Link } from "react-router-dom";
-import Routes from '../../../../Setup/routes-manager/routes.json';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -32,18 +31,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const MarketplaceDashboard = () => {
+const MarketplaceDashboard = (props) => {
+    const { handleSelectedProduct } = props;
     const classes = useStyles();
     const { t } = useTranslation();
     const history = useHistory();
 
-
-    const handleOpen = (item) => {
-        history.push({
-            pathname: Routes.marketplaceList,
-            state: { data: item }
-        })
-    }
 
     return (<>
         <Grid container xs={12}>
@@ -54,7 +47,7 @@ const MarketplaceDashboard = () => {
                 </Grid>
                 <Grid item xs={12} style={{ display: 'flex', gap: '25px' }}>
                     {MarketplaceData.Dashboard.map(item => {
-                        return <Box className={classes.box} onClick={() => handleOpen(item)}>
+                        return <Box className={classes.box} onClick={() => handleSelectedProduct(item)}>
                             <img src={item.image} style={{ height: '100%' }} />
                             <Typography varient='p' className={classes.subHeader}>{item.name}</Typography>
                         </Box>
