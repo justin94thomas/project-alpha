@@ -6,6 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 import './marketplace.css';
 import MarketplaceDashboard from './Components/Dashboard';
 import ProductList from './Components/Product';
+import MarketplaceCart from './Components/Cart';
 
 const useStyles = makeStyles((theme) => ({
     marketplaceHeader: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 const Header = (props) => {
-    const { showMarketPlace } = props;
+    const { showMarketPlace, handleShowCart } = props;
     const theme = useTheme();
     const classes = useStyles();
 
@@ -54,7 +55,7 @@ const Header = (props) => {
                 </Grid>
                 <Grid item xs={4} className={classes.profile}>
                     <CiSearch size={20} />
-                    <MdOutlineShoppingCart size={20} />
+                    <MdOutlineShoppingCart size={20} style={{ cursor: 'pointer' }} onClick={handleShowCart} />
                     <FaUserCircle size={20} />
                 </Grid>
             </Grid>
@@ -64,26 +65,46 @@ const Header = (props) => {
 
 const Marketplace = () => {
     const classes = useStyles();
-    const [showProducts, setShowProducts] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState();
+    const [openScreen, setOpenScreen] = useState({
+        dashboard: true,
+        showProducts: false,
+        showCart: false
+    })
 
     const handleSelectedProduct = (item) => {
-        setShowProducts(true)
+        setOpenScreen({
+            dashboard: false,
+            showProducts: true,
+            showCart: false
+        })
         setSelectedProduct(item);
     }
     const showMarketPlace = () => {
-        setShowProducts(false);
+        setOpenScreen({
+            dashboard: true,
+            showProducts: false,
+            showCart: false
+        })
     }
+    const handleShowCart = () => {
+        setOpenScreen({
+            dashboard: false,
+            showProducts: false,
+            showCart: true
+        })
+    }
+
     return (
         <div className='marketplace-container'>
             <Grid container xs={12}>
                 <Grid item xs={12} className={classes.postion1}>
-                    <Header showMarketPlace={showMarketPlace} />
+                    <Header showMarketPlace={showMarketPlace} handleShowCart={handleShowCart} />
                 </Grid>
                 <Grid item xs={12} className={classes.postion2}>
-                    {showProducts ? <ProductList selectedProduct={selectedProduct} /> :
-                        <MarketplaceDashboard handleSelectedProduct={handleSelectedProduct} />
-                    }
+                    {openScreen?.dashboard && <MarketplaceDashboard handleSelectedProduct={handleSelectedProduct} />}
+                    {openScreen?.showProducts && <ProductList selectedProduct={selectedProduct} />}
+                    {openScreen?.showCart && <MarketplaceCart />}
                 </Grid>
             </Grid>
         </div>

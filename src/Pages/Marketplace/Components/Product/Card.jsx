@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Box, Typography, makeStyles, useTheme, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import Carousel from 'react-bootstrap/Carousel';
-
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const useStyles = makeStyles((theme) => ({
     cardImgBox: {
@@ -64,7 +64,7 @@ const ProductCard = ({ productData }) => {
                                 <Typography varient='p' className={classes.productName}>{item.name}</Typography>
                                 <Typography varient='p' className={classes.productReview}>(100)</Typography>
                                 <Typography varient='p' className={classes.productPrice}>{item.price} {item.original && <span className={classes.discountedPrice}>{item.original}</span>} </Typography>
-                                <Button className={classes.addBtn}>Add to Cart</Button>
+                                <Button className={classes.addBtn}>Add to Cart <MdOutlineShoppingCart style={{ marginLeft: '10px' }} size={16} /></Button>
                             </Box>
                         </Grid>
                     })}
