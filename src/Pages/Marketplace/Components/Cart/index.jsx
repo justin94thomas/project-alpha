@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, Button } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { FaTrashCan } from "react-icons/fa6";
 import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, Button } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import Carousel from 'react-bootstrap/Carousel';
 import { MdOutlineShoppingCart } from "react-icons/md";
