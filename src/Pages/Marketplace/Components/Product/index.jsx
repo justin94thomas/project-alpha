@@ -82,9 +82,9 @@ const Filter = ({ selectedProduct, setFilterData }) => {
                     )}
                 </div>
             </div>
-            <div style={{ marginTop: '30px' }}>
+            {/* <div style={{ marginTop: '30px' }}>
                 <Typography varient={'p'} style={{ fontWeight: 600 }}>Price</Typography>
-            </div>
+            </div> */}
         </Box>
     )
 }
