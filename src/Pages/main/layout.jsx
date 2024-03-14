@@ -1,5 +1,6 @@
+// Layout.js
 import React, { Suspense, useState } from "react";
-import { Route, Switch, Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Routes from '../../Setup/routes-manager/routes.json';
 import { Box, makeStyles } from '@material-ui/core';
 import Header from "../../Components/Header";
@@ -7,7 +8,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
 import Loader from '../../Components/Loader';
 import Dashboard from "../dashboard";
-import ShoppingCart from "../Shopping-Cart";
+import Marketplace from "../Marketplace";
+import ProductList from "../Marketplace/Components/Product";
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
@@ -38,12 +40,9 @@ function Layout() {
                         <Box className={classes.content}>
                             <Suspense fallback={<Loader />}>
                                 <Switch>
-                                    <Route exact path={Routes.dashboard}>
-                                        <Dashboard />
-                                    </Route>
-                                    <Route exact path={Routes.shoppingApp}>
-                                        <ShoppingCart />
-                                    </Route>
+                                    <Route path={Routes.dashboard} component={Dashboard} />
+                                    <Route path={Routes.marketplace} component={Marketplace} />
+                                    <Route path={Routes.marketplaceList} component={ProductList} />
                                 </Switch>
                             </Suspense>
                         </Box>

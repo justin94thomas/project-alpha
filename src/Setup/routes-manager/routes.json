@@ -1,4 +1,5 @@
 {
     "dashboard": "/dashboard",
-    "shoppingApp": "/shopping-app"
+    "marketplace": "/marketplace",
+    "marketplaceList": "/product"
 }
