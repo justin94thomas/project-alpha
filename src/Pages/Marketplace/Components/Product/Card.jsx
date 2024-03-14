@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     itemDetails: {
         gap: '4px',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        height: '142px'
     },
     productName: {
         textAlign: 'left',
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     addBtn: {
         border: '1px solid #eee',
         borderRadius: '8px',
+        marginTop: 'auto',
         '&:hover': {
             background: '#0242E8',
             color: '#fff'
@@ -48,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
     },
     quantitySelector: {
         display: 'flex',
-        justifyContent: 'space-evenly'
+        justifyContent: 'space-evenly',
+        marginTop: 'auto',
     }
 }))
 
