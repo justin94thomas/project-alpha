@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box, Typography, makeStyles, useTheme, Button } from '@material-ui/core';
 import { FaTrashCan } from "react-icons/fa6";
+import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
 
 const useStyles = makeStyles((theme) => ({
     myCartText: {
@@ -103,12 +104,48 @@ const useStyles = makeStyles((theme) => ({
     checkoutItemTotal: {
         fontSize: '14px',
         fontWeight: 600
+    },
+    noCartImg: {
+        width: '500px',
+        alignSelf: 'center'
     }
 }))
 
 const MarketplaceCart = () => {
     const classes = useStyles();
+    const { state, dispatch } = useMarketplaceContext();
 
+    const [paymentData, setPaymentData] = useState({
+        subTotal: '',
+        tax: '',
+        shippingDiscount: 50,
+        total: ''
+    })
+
+    const handleUpdateQuantity = (e, item) => {
+        const { value } = e.target;
+        dispatch({ type: 'UPDATE_QUANTITY', payload: item.id, update: value });
+        if (value === '0') {
+            dispatch({ type: 'REMOVE_FROM_CART', payload: item.id });
+        }
+    }
+    const handleRemoveItem = (item) => {
+        dispatch({ type: 'REMOVE_FROM_CART', payload: item.id });
+    }
+
+    useEffect(() => {
+        if (state.cart) {
+            let subTotal = state.cart.reduce((prev, curr) => prev + (curr.price * parseInt(curr.quantity)), 0);
+            let tax = subTotal * 0.1;
+            let total = subTotal + tax - (state.cart.length > 0 ? paymentData.shippingDiscount : 0);
+            setPaymentData({
+                subTotal: subTotal,
+                tax: tax,
+                shippingDiscount: 50,
+                total: total.toFixed(2)
+            });
+        }
+    }, [state.cart]);
 
     return (<Grid container xs={12} justifyContent='center'>
         <Grid container xs={9} className={classes.cartMain}>
@@ -121,36 +158,48 @@ const MarketplaceCart = () => {
                 <Typography style={{ fontSize: '14px' }}>Need Help?</Typography>
             </Grid>
             <Grid item xs={12} className={classes.cardMain}>
+                {/* Product Listings */}
                 <Grid item xs={9} className={classes.cartCard}>
-                    <Box className={classes.cartItem}>
-                        <Grid container xs={12}>
-                            <Grid item xs={5}>
-                                <Grid item xs={12} style={{ padding: '5px 12px' }}>
-                                    <Typography varient='p' style={{ fontWeight: 600, fontSize: '13px' }}>Product Name</Typography>
+                    {state?.cart.length > 0 ? state?.cart.map((cartItem, index) => {
+                        let totalAmount = cartItem.price * cartItem.quantity || 0;
+                        return <Box className={classes.cartItem}>
+                            <Grid container xs={12}>
+                                <Grid item xs={5}>
+                                    <Grid item xs={12} style={{ padding: '5px 12px' }}>
+                                        <Typography varient='p' style={{ fontWeight: 600, fontSize: '13px' }}>{cartItem?.name}</Typography>
+                                    </Grid>
+                                    <Grid item xs={12} className={classes.productDetail}>
+                                        <img style={{ height: '90px', padding: '0px 0px 10px 10px' }} src={cartItem?.image[0]} />
+                                        <Typography varient='p'>In Stock</Typography>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12} className={classes.productDetail}>
-                                    <img style={{ height: '90px', padding: '0px 0px 10px 10px' }} src={'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/211d4d31-22dc-4792-aafd-70a6d32a4fdf/air-jordan-i-high-g-golf-shoes-qKzTBg.png'} />
-                                    <Typography varient='p'>In Stock</Typography>
+                                <Grid item xs={2} className={classes.productDetail2}>
+                                    <Typography varient="p" style={{ fontSize: '13px', color: '#a4a4a4' }}>Each</Typography>
+                                    <Typography varient="p">Rs. {cartItem.price}</Typography>
+                                </Grid>
+                                <Grid item xs={2} className={classes.productDetail2}>
+                                    <Typography className={classes.checkoutItems}>Quantity</Typography>
+                                    <input name="Quantity" type='number' value={cartItem.quantity}
+                                        onChange={(e) => handleUpdateQuantity(e, cartItem)}
+                                        style={{ width: 75, paddingLeft: 6 }}
+                                    />
+                                </Grid>
+                                <Grid item xs={2} className={classes.productDetail2}>
+                                    <Typography className={classes.checkoutItems}>Total</Typography>
+                                    <Typography style={{ fontSize: "15px" }}>Rs {totalAmount}</Typography>
+                                </Grid>
+                                <Grid item xs={1} className={classes.productDetail2}>
+                                    <FaTrashCan size={18} style={{ cursor: 'pointer' }} onClick={() => handleRemoveItem(cartItem)} />
                                 </Grid>
                             </Grid>
-                            <Grid item xs={2} className={classes.productDetail2}>
-                                <Typography varient="p" style={{ fontSize: '13px', color: '#a4a4a4' }}>Each</Typography>
-                                <Typography varient="p">Rs. 100</Typography>
-                            </Grid>
-                            <Grid item xs={2} className={classes.productDetail2}>
-                                <Typography className={classes.checkoutItems}>Quantity</Typography>
-                                <input name="Quantity" type='number' style={{ width: 75, paddingLeft: 6 }} />
-                            </Grid>
-                            <Grid item xs={2} className={classes.productDetail2}>
-                                <Typography className={classes.checkoutItems}>Total</Typography>
-                                <Typography style={{ fontSize: "15px" }}>Rs 300</Typography>
-                            </Grid>
-                            <Grid item xs={1} className={classes.productDetail2}>
-                                <FaTrashCan size={18} />
-                            </Grid>
-                        </Grid>
-                    </Box>
+                        </Box>
+                    }) : <>
+                        <img src={'https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png'} className={classes.noCartImg} />
+                        <Typography>Your cart is empty</Typography>
+                    </>
+                    }
                 </Grid>
+                {/* Total */}
                 <Grid item xs={3} className={classes.checkoutMain}>
                     <Grid item xs={12}>
                         <Typography className={classes.checkoutItems}>Enter Discount Code</Typography>
@@ -165,23 +214,25 @@ const MarketplaceCart = () => {
                         </div>
                         <div className={classes.promotionCard2} style={{ paddingTop: 10 }}>
                             <Typography className={classes.checkoutItems}>Sub Total</Typography>
-                            <Typography className={classes.checkoutItems}>Rs. 50</Typography>
+                            <Typography className={classes.checkoutItems}>Rs. {paymentData.subTotal}</Typography>
                         </div>
-                        <div className={classes.promotionCard2}>
-                            <Typography className={classes.checkoutItems}>Shipping Cost</Typography>
-                            <Typography className={classes.checkoutItems}>Rs. 50</Typography>
-                        </div>
-                        <div className={classes.promotionCard2}>
-                            <Typography className={classes.checkoutItemDiscount}>Shipping Discount</Typography>
-                            <Typography className={classes.checkoutItemDiscount}>-Rs. 50</Typography>
-                        </div>
+                        {state.cart.length > 0 ? <>
+                            <div className={classes.promotionCard2}>
+                                <Typography className={classes.checkoutItems}>Shipping Cost</Typography>
+                                <Typography className={classes.checkoutItems}>Rs. 50</Typography>
+                            </div>
+                            <div className={classes.promotionCard2}>
+                                <Typography className={classes.checkoutItemDiscount}>Shipping Discount</Typography>
+                                <Typography className={classes.checkoutItemDiscount}>-Rs. {paymentData.shippingDiscount}</Typography>
+                            </div></> : null}
+
                         <div className={classes.promotionCard2}>
                             <Typography className={classes.checkoutItems}>Tax</Typography>
-                            <Typography className={classes.checkoutItems}>Rs. 50</Typography>
+                            <Typography className={classes.checkoutItems}>Rs. {paymentData.tax}</Typography>
                         </div>
                         <div className={classes.promotionCard2}>
                             <Typography className={classes.checkoutItemTotal} >Total</Typography>
-                            <Typography className={classes.checkoutItemTotal}>Rs. 50</Typography>
+                            <Typography className={classes.checkoutItemTotal}>Rs. {paymentData.total}</Typography>
                         </div>
                         <Button className={classes.checkoutBtn}>Checkout</Button>
                     </Grid>

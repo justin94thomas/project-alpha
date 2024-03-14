@@ -16,6 +16,8 @@ const reducer = (state, action) => {
             return { ...state, cart: state.cart.filter(item => item.id !== action.payload) };
         case 'ADD_QUANTITY':
             return { ...state, cart: state.cart.map(item => item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item) }
+        case 'UPDATE_QUANTITY':
+            return { ...state, cart: state.cart.map(item => item.id === action.payload ? { ...item, quantity: action.update } : item) }
         case 'REDUCE_QUANTITY':
             return { ...state, cart: state.cart.map(item => item.id === action.payload ? { ...item, quantity: Math.max(0, item.quantity - 1) } : item) }
         default:
