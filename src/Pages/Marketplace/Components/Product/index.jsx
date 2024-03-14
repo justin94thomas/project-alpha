@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, Checkbox } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, Checkbox } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import ProductCard from './Card';
 import { LuFilter } from "react-icons/lu";
@@ -81,9 +82,9 @@ const Filter = ({ selectedProduct, setFilterData }) => {
                     )}
                 </div>
             </div>
-            <div style={{ marginTop: '30px' }}>
+            {/* <div style={{ marginTop: '30px' }}>
                 <Typography varient={'p'} style={{ fontWeight: 600 }}>Price</Typography>
-            </div>
+            </div> */}
         </Box>
     )
 }

@@ -5,6 +5,7 @@ const MarketplaceContext = createContext();
 
 const initialState = {
     Sneakers: ProductList.Sneakers,
+    Clothing: ProductList.Clothing,
     cart: []
 }
 

@@ -2,7 +2,8 @@
     "Content": [
         {
             "Name": "Marketplace",
-            "Routes": "/marketplace"
+            "Routes": "/marketplace",
+            "Image": "marketplaceLogo"
         }
     ]
 }
