@@ -1,14 +1,11 @@
 // SneakerContext.js
 import React, { createContext, useContext, useReducer } from 'react';
+import ProductData from '../Pages/Sneaker-Shop/product.json';
 
 const SneakerContext = createContext();
 
 const initialState = {
-    sneakers: [
-        { id: 1, name: 'Sneaker 1', price: 50, description: 'Lorem ipsum...' },
-        { id: 2, name: 'Sneaker 2', price: 70, description: 'Lorem ipsum...' },
-        // Add more sneakers as needed
-    ],
+    sneakers: ProductData.Sneakers,
     cart: [],
 };
 
@@ -24,6 +21,7 @@ const reducer = (state, action) => {
                 cart: state.cart.map(item =>
                     item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item
                 ),
+
             };
         case 'DECREMENT_QUANTITY':
             return {
@@ -46,6 +44,7 @@ const SneakerProvider = ({ children }) => {
         </SneakerContext.Provider>
     );
 };
+
 
 const useSneakerContext = () => {
     const context = useContext(SneakerContext);

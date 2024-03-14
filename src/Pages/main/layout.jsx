@@ -8,9 +8,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
 import Loader from '../../Components/Loader';
 import Dashboard from "../dashboard";
-import ShoppingCart from "../Shopping-Cart";
-import SneakerShop from "../Sneaker-Shop/index";
-import Timer from "../Timer";
+import Marketplace from "../Marketplace";
+import ProductList from "../Marketplace/Components/Product";
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
@@ -42,9 +41,8 @@ function Layout() {
                             <Suspense fallback={<Loader />}>
                                 <Switch>
                                     <Route path={Routes.dashboard} component={Dashboard} />
-                                    <Route path={Routes.shoppingApp} component={ShoppingCart} />
-                                    <Route path={Routes.timer} component={Timer} />
-                                    <Route path={Routes.sneakerShop} component={SneakerShop} />
+                                    <Route path={Routes.marketplace} component={Marketplace} />
+                                    <Route path={Routes.marketplaceList} component={ProductList} />
                                 </Switch>
                             </Suspense>
                         </Box>

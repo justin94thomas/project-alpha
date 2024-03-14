@@ -11,11 +11,15 @@ import {
     TextField,
     Box,
 } from '@material-ui/core';
+import { useHistory, Link } from "react-router-dom";
 import Autocomplete from '@mui/material/Autocomplete';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Routes from '../../Setup/routes-manager/routes.json';
+
 
 const Header = () => {
+    const history = useHistory();
     const [profileAnchorEl, setProfileAnchorEl] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -44,7 +48,7 @@ const Header = () => {
                 <IconButton edge="start" color="inherit" aria-label="menu">
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6">
+                <Typography variant="h6" style={{ cursor: 'pointer' }} onClick={() => history.push(Routes.dashboard)}>
                     Project Alpha
                 </Typography>
                 <Box style={{ flexGrow: 1 }}>
