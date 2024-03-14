@@ -13,8 +13,7 @@ import {
 } from '@material-ui/core';
 import { useHistory, Link } from "react-router-dom";
 import Autocomplete from '@mui/material/Autocomplete';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { icons } from '../../Setup/Content/assets';
 import Routes from '../../Setup/routes-manager/routes.json';
 
 
@@ -23,6 +22,7 @@ const Header = () => {
     const [profileAnchorEl, setProfileAnchorEl] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
+    const { MenuIcon, AccountCircleIcon } = icons;
 
     const handleProfileClick = (event) => {
         setProfileAnchorEl(event.currentTarget);

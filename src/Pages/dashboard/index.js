@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
 import { useHistory, Link } from "react-router-dom";
 import Projects from "./projects.json";
+import { images } from "../../Setup/Content/assets";
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -28,8 +29,9 @@ export default function Dashboard() {
                 {Projects?.Content.map((item) => (
                     <Grid item xs={2} key={item.Name}>
 
-                        <Link to={item.Routes}>
+                        <Link to={item.Routes} style={{ textDecoration: 'none' }}>
                             <div className={classes.content}>
+                                <img src={images[item.Image]} style={{ width: '100%' }} />
                                 <Typography variant="p">{item.Name}</Typography>
                             </div>
                         </Link>
