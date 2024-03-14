@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography, makeStyles, useTheme, Checkbox } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import MarketplaceData from '../data.json';
 import ProductCard from './Card';
 import { LuFilter } from "react-icons/lu";
+import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
+
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -40,13 +41,14 @@ const useStyles = makeStyles((theme) => ({
 
 const Filter = ({ selectedProduct, setFilterData }) => {
     const classes = useStyles();
+    const { state } = useMarketplaceContext();
     const [brands, setBrands] = useState([]);
     const [selectedBrands, setSelectedBrands] = useState([]);
 
     useEffect(() => {
         let productType = selectedProduct?.name;
-        if (MarketplaceData[productType]) {
-            const uniqueBrands = [...new Set(MarketplaceData[productType].map(product => product.brand))];
+        if (state[productType]) {
+            const uniqueBrands = [...new Set(state[productType].map(product => product.brand))];
             setBrands(uniqueBrands);
         }
     }, [selectedProduct]);
@@ -56,12 +58,12 @@ const Filter = ({ selectedProduct, setFilterData }) => {
         if (e.target.checked) {
             const updatedBrands = [...selectedBrands, brand];
             setSelectedBrands(updatedBrands);
-            const filteredList = MarketplaceData[productType].filter(product => updatedBrands.includes(product.brand));
+            const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
             setFilterData(filteredList);
         } else {
             const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
             setSelectedBrands(updatedBrands);
-            const filteredList = MarketplaceData[productType].filter(product => updatedBrands.includes(product.brand));
+            const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
             setFilterData(filteredList);
         }
     };
@@ -88,21 +90,21 @@ const Filter = ({ selectedProduct, setFilterData }) => {
 const ProductList = ({ selectedProduct }) => {
     const classes = useStyles();
     const { t } = useTranslation();
+    const { state } = useMarketplaceContext();
     const [productData, setProductData] = useState([]);
     const [filterData, setFilterData] = useState();
 
 
     useEffect(() => {
-        if (selectedProduct && MarketplaceData) {
+        if (selectedProduct && state) {
             let productType = selectedProduct?.name;
-            const productData = MarketplaceData[productType] ? MarketplaceData[productType] : [];
+            const productData = state[productType] ? state[productType] : [];
             setProductData(productData);
         }
         if (filterData) {
             setProductData(filterData);
         }
-    }, [MarketplaceData, filterData])
-
+    }, [state, filterData])
 
     return (<>
         <Grid container xs={12}>

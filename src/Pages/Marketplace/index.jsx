@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box, Typography, makeStyles, useTheme, } from '@material-ui/core';
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
@@ -7,6 +7,8 @@ import './marketplace.css';
 import MarketplaceDashboard from './Components/Dashboard';
 import ProductList from './Components/Product';
 import MarketplaceCart from './Components/Cart';
+import { MarketplaceProvider, useMarketplaceContext } from '../../Setup/Context/MarketplaceContext';
+
 
 const useStyles = makeStyles((theme) => ({
     marketplaceHeader: {
@@ -35,12 +37,31 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         fontSize: '20px',
         cursor: 'pointer'
-    }
+    },
+    addedToCart: {
+        borderRadius: '50%',
+        width: 16,
+        border: '1px solid',
+        lineHeight: '15px',
+        background: 'red',
+        color: '#fff',
+        position: 'absolute',
+        top: '-14px',
+        right: '-10px',
+        fontSize: '10px'
+    },
 }))
 const Header = (props) => {
     const { showMarketPlace, handleShowCart } = props;
     const theme = useTheme();
     const classes = useStyles();
+    const { state, dispatch } = useMarketplaceContext();
+
+    useEffect(() => {
+        if (state?.cart?.length > 0) {
+            console.log('cart data', state?.cart);
+        }
+    }, [state])
 
     return (
         <div className={classes.marketplaceHeader}>
@@ -55,7 +76,10 @@ const Header = (props) => {
                 </Grid>
                 <Grid item xs={4} className={classes.profile}>
                     <CiSearch size={20} />
-                    <MdOutlineShoppingCart size={20} style={{ cursor: 'pointer' }} onClick={handleShowCart} />
+                    <div style={{ display: 'flex', position: 'relative' }}>
+                        <MdOutlineShoppingCart size={20} style={{ cursor: 'pointer' }} onClick={handleShowCart} />
+                        {state?.cart.length > 0 ? <span className={classes.addedToCart}>{state?.cart.length}</span> : null}
+                    </div>
                     <FaUserCircle size={20} />
                 </Grid>
             </Grid>
@@ -97,16 +121,18 @@ const Marketplace = () => {
 
     return (
         <div className='marketplace-container'>
-            <Grid container xs={12}>
-                <Grid item xs={12} className={classes.postion1}>
-                    <Header showMarketPlace={showMarketPlace} handleShowCart={handleShowCart} />
+            <MarketplaceProvider>
+                <Grid container xs={12}>
+                    <Grid item xs={12} className={classes.postion1}>
+                        <Header showMarketPlace={showMarketPlace} handleShowCart={handleShowCart} />
+                    </Grid>
+                    <Grid item xs={12} className={classes.postion2}>
+                        {openScreen?.dashboard && <MarketplaceDashboard handleSelectedProduct={handleSelectedProduct} />}
+                        {openScreen?.showProducts && <ProductList selectedProduct={selectedProduct} />}
+                        {openScreen?.showCart && <MarketplaceCart />}
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} className={classes.postion2}>
-                    {openScreen?.dashboard && <MarketplaceDashboard handleSelectedProduct={handleSelectedProduct} />}
-                    {openScreen?.showProducts && <ProductList selectedProduct={selectedProduct} />}
-                    {openScreen?.showCart && <MarketplaceCart />}
-                </Grid>
-            </Grid>
+            </MarketplaceProvider>
         </div>
     )
 }
