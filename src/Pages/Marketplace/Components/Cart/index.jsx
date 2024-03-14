@@ -3,7 +3,7 @@ import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { FaTrashCan } from "react-icons/fa6";
 import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
-
+import { images } from '../../../../Setup/Content/assets';
 const useStyles = makeStyles((theme) => ({
     myCartText: {
         fontWeight: 600,
@@ -195,7 +195,7 @@ const MarketplaceCart = () => {
                             </Grid>
                         </Box>
                     }) : <>
-                        <img src={'https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png'} className={classes.noCartImg} />
+                        <img src={images.emptyCart} className={classes.noCartImg} />
                         <Typography>Your cart is empty</Typography>
                     </>
                     }
