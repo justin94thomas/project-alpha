@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, Checkbox } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, Checkbox } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 import ProductCard from './Card';
 import { LuFilter } from "react-icons/lu";

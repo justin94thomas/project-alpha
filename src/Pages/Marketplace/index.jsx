@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, makeStyles, useTheme, } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
