@@ -2,9 +2,13 @@
   "translations": {},
   "headings": {
     "Marketplace_Header": "SHOES, CLOTHING & ACCESSORIES SALE: UP TO 60% OFF",
-    "Marketplace_SubText": "Remake your look for less. Whether you're an avid athlete or seeking a fresh streetwear vibe, you'll find the best gear at the marketplace clothing and shoes sale. Save up to 60% off iconic styles."
+    "Marketplace_SubText": "Remake your look for less. Whether you're an avid athlete or seeking a fresh streetwear vibe, you'll find the best gear at the marketplace clothing and shoes sale. Save up to 60% off iconic styles.",
+    "Marketplace_Page404": "This page is currently",
+    "Marketplace_Page404_2": "under construction."
   },
-  "content": {},
+  "content": {
+    "Marketplace_checkBack": "Please check back with us soon."
+  },
   "messages": {},
   "labels": {},
   "login": {}

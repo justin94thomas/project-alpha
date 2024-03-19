@@ -109,10 +109,10 @@ const ProductList = ({ selectedProduct }) => {
 
     return (<>
         <Grid container xs={12}>
-            <Grid item xs={2} style={{ height: '100vh' }}>
+            {/* <Grid item xs={2} style={{ height: '100vh' }}>
                 <Filter selectedProduct={selectedProduct} productData={productData} setFilterData={setFilterData} />
-            </Grid>
-            <Grid item xs={9}>
+            </Grid> */}
+            <Grid item xs={11}>
                 <Box>
                     <Typography varient={'p'} className={classes.filterHead} style={{ marginLeft: 30 }}>{selectedProduct?.name} ({productData.length})</Typography>
                 </Box>

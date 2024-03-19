@@ -1,5 +1,4 @@
 {
     "dashboard": "/dashboard",
-    "marketplace": "/marketplace",
-    "marketplaceList": "/product"
+    "marketplace": "/marketplace"
 }
