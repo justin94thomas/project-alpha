@@ -8,7 +8,6 @@ import { ErrorFallback } from '../../Utils/ErrorBoundary';
 
 import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
-
 const Dashboard = React.lazy(() => import('../dashboard'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
 
