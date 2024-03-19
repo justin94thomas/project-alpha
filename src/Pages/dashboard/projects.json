@@ -4,6 +4,11 @@
             "Name": "Marketplace",
             "Routes": "/marketplace",
             "Image": "marketplaceLogo"
+        },
+        {
+            "Name": "Blockbuster",
+            "Routes": "/blockbuster",
+            "Image": "blockbusterLogo"
         }
     ]
 }

@@ -9,6 +9,7 @@ import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
 const Dashboard = React.lazy(() => import('../dashboard'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
+const Blockbuster = React.lazy(() => import('../Blockbuster'));
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
@@ -38,6 +39,7 @@ function Layout() {
                                 <Switch>
                                     <Route path={Routes.dashboard} component={Dashboard} />
                                     <Route path={Routes.marketplace} component={Marketplace} />
+                                    <Route path={Routes.blockbuster} component={Blockbuster} />
                                 </Switch>
                             </Suspense>
                         </Box>

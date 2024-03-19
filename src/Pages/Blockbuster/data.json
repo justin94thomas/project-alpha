@@ -1,0 +1,126 @@
+{
+    "Movies": [
+        {
+            "id": "mov-001",
+            "title": "Kung Fu Panda",
+            "image": "https://m.media-amazon.com/images/M/MV5BZDY0YzI0OTctYjVhYy00MTVhLWE0NTgtYTRmYTBmOTE3YTViXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg",
+            "genre": [
+                "Action",
+                "Animation",
+                "Adventure",
+                "Comedy"
+            ],
+            "ratings": 8.5,
+            "synopsis": "Po faces his greatest challenge yet when he ventures to the big city and meets a new villain called the Chameleon.",
+            "cast": [
+                "Jack Black",
+                "Bryan Cranston",
+                "Dustin Hoffman",
+                "Angelina Jolie"
+            ],
+            "theaters": [
+                "Cinepolis: Nexus Shantiniketan, Bengaluru",
+                "PVR: VR Bengaluru, Whitefield Road",
+                "PVR: Nexus, Koramangala"
+            ],
+            "timings": [
+                "10:00 AM",
+                "1:00 PM",
+                "5:00 PM"
+            ],
+            "totalSeats": 100,
+            "status": "in-theaters"
+        },
+        {
+            "id": "mov-002",
+            "title": "Godzilla x Kong: The New Empire",
+            "image": "https://m.media-amazon.com/images/M/MV5BMWI2ZmE0MmYtM2ZmZS00OWY1LTg1YzctODczZGIzNDQwZDM2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+            "genre": [
+                "Action",
+                "Sci-Fi",
+                "Thriller"
+            ],
+            "ratings": 8.5,
+            "synopsis": "An all-new adventure that pits the almighty Kong and the fearsome Godzilla against a colossal undiscovered threat hidden within our world, challenging their very existence-and our own.",
+            "cast": [
+                "Rebecca Hall",
+                "Brian Tyree Henry",
+                "Dan Stevens",
+                "Rachel House"
+            ],
+            "theaters": [
+                "Cinepolis: Nexus Shantiniketan, Bengaluru",
+                "PVR: VR Bengaluru, Whitefield Road",
+                "PVR: Nexus, Koramangala"
+            ],
+            "timings": [
+                "10:00 AM",
+                "1:00 PM",
+                "5:00 PM"
+            ],
+            "totalSeats": 100,
+            "status": "in-theaters"
+        },
+        {
+            "id": "mov-003",
+            "title": "Manjummel Boys",
+            "image": "https://m.media-amazon.com/images/M/MV5BMTkxY2QxYTctOTRlMC00ZGQxLTlmMGItM2RhNmJkMTE4M2FlXkEyXkFqcGdeQXVyMjkxNzQ1NDI@._V1_.jpg",
+            "genre": [
+                "Drama",
+                "Adventure",
+                "Thriller"
+            ],
+            "ratings": 9.4,
+            "synopsis": "A group of friends get into a daring rescue mission to save their friend from Guna Caves, a perilously deep pit from where nobody has ever been brought back.",
+            "cast": [
+                "Soubin Shahir",
+                "Sreenath Bhasi",
+                "Balu Varghese",
+                "Ganapathy"
+            ],
+            "theaters": [
+                "Cinepolis: Nexus Shantiniketan, Bengaluru",
+                "PVR: VR Bengaluru, Whitefield Road",
+                "PVR: Nexus, Koramangala"
+            ],
+            "timings": [
+                "10:00 AM",
+                "1:00 PM",
+                "5:00 PM"
+            ],
+            "totalSeats": 80,
+            "status": "upcoming"
+        },
+        {
+            "id": "mov-004",
+            "title": "Dune: Part Two",
+            "image": "https://diandrareviewsitall.com/wp-content/uploads/2024/02/MV5BODdjMjM3NGQtZDA5OC00NGE4LWIyZDQtZjYwOGZlMTM5ZTQ1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
+            "genre": [
+                "Action",
+                "Drama",
+                "Adventure",
+                "Sci-Fi"
+            ],
+            "ratings": 9.1,
+            "synopsis": "Dune: Part Two will explore the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love and the fate of the known universe, he endeavors to prevent a terrible future only he can foresee.",
+            "cast": [
+                "Timothée Chalamet",
+                "Zendaya",
+                "Josh Brolin",
+                "Austin Butler"
+            ],
+            "theaters": [
+                "Cinepolis: Nexus Shantiniketan, Bengaluru",
+                "PVR: VR Bengaluru, Whitefield Road",
+                "PVR: Nexus, Koramangala"
+            ],
+            "timings": [
+                "10:00 AM",
+                "1:00 PM",
+                "5:00 PM"
+            ],
+            "totalSeats": 95,
+            "status": "in-theaters"
+        }
+    ]
+}
