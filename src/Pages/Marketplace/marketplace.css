@@ -1,3 +1,7 @@
 .marketplace-header {
     width: '100%';
 }
+
+.marketplace-navigation {
+    padding: '16px'
+}

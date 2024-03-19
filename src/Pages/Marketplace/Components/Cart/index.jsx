@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: '15px',
         fontSize: '12px',
         marginTop: '-5px',
-        width: '115px'
+        width: '85px'
     },
     promotionCard: {
         display: 'flex',
@@ -204,14 +204,14 @@ const MarketplaceCart = () => {
                 <Grid item xs={3} className={classes.checkoutMain}>
                     <Grid item xs={12}>
                         <Typography className={classes.checkoutItems}>Enter Discount Code</Typography>
-                        <input name="Quantity" type='text' placeholder="Discount Code" style={{ width: 140 }} />
+                        <input name="Quantity" type='text' placeholder="Discount Code" style={{ width: 120 }} />
                         <Button className={classes.discountBtn}>Submit</Button>
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: '15px' }}>
                         <Typography style={{ fontSize: "16px", fontWeight: 600 }}>Promotions</Typography>
                         <div className={classes.promotionCard}>
                             <Typography className={classes.checkoutItems}>Fee Shipping on order above Rs. 1000</Typography>
-                            <Typography className={classes.checkoutItems} style={{ color: 'green' }}>-Rs. 50</Typography>
+                            <Typography className={classes.checkoutItems} style={{ color: 'green', width: 52 }}>-Rs. 50</Typography>
                         </div>
                         <div className={classes.promotionCard2} style={{ paddingTop: 10 }}>
                             <Typography className={classes.checkoutItems}>Sub Total</Typography>

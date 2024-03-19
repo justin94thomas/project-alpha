@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
     main: {
         display: "flex",
         gap: 20,
-        padding: "16px",
     },
     content: {
         border: "1px solid #f4f4f4",
@@ -24,7 +23,7 @@ export default function Dashboard() {
     const history = useHistory();
 
     return (
-        <Box>
+        <Box style={{ margin: 16 }}>
             <Grid container spacing={2} className={classes.main}>
                 {Projects?.Content.map((item) => (
                     <Grid item xs={2} key={item.Name}>

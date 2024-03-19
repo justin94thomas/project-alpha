@@ -9,16 +9,12 @@ import { ErrorFallback } from '../../Utils/ErrorBoundary';
 import Loader from '../../Components/Loader';
 import Dashboard from "../dashboard";
 import Marketplace from "../Marketplace";
-import ProductList from "../Marketplace/Components/Product";
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
         position: 'fixed',
         width: '100%'
     },
-    content: {
-        margin: '16px',
-    }
 }))
 
 function Layout() {
@@ -42,7 +38,6 @@ function Layout() {
                                 <Switch>
                                     <Route path={Routes.dashboard} component={Dashboard} />
                                     <Route path={Routes.marketplace} component={Marketplace} />
-                                    <Route path={Routes.marketplaceList} component={ProductList} />
                                 </Switch>
                             </Suspense>
                         </Box>
