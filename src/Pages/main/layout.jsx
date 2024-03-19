@@ -5,10 +5,8 @@ import Routes from '../../Setup/routes-manager/routes.json';
 import { Grid, Box, makeStyles } from '@material-ui/core';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
-
 import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
-
 const Dashboard = React.lazy(() => import('../dashboard'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
 
