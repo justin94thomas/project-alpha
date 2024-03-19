@@ -26,8 +26,7 @@ export default function Dashboard() {
         <Box style={{ margin: 16 }}>
             <Grid container spacing={2} className={classes.main}>
                 {Projects?.Content.map((item) => (
-                    <Grid item xs={2} key={item.Name}>
-
+                    <Grid item xs={6} sm={4} lg={2} key={item.Name}>
                         <Link to={item.Routes} style={{ textDecoration: 'none' }}>
                             <div className={classes.content}>
                                 <img src={images[item.Image]} style={{ width: '100%' }} />

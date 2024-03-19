@@ -149,7 +149,7 @@ const MarketplaceCart = () => {
     }, [state.cart]);
 
     return (<Grid container xs={12} justifyContent='center'>
-        <Grid container xs={9} className={classes.cartMain}>
+        <Grid container xs={11} className={classes.cartMain}>
             <Grid item xs={12} className={classes.myCartBox}>
                 <Typography varient='p' className={classes.myCartText}>Your Cart</Typography>
             </Grid>

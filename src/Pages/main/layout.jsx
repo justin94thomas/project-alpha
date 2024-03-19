@@ -1,14 +1,16 @@
 // Layout.js
-import React, { Suspense, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Link, Route, Switch } from 'react-router-dom';
 import Routes from '../../Setup/routes-manager/routes.json';
-import { Box, makeStyles } from '@material-ui/core';
-import Header from "../../Components/Header";
+import { Grid, Box, makeStyles } from '@material-ui/core';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
+
+import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
-import Dashboard from "../dashboard";
-import Marketplace from "../Marketplace";
+
+const Dashboard = React.lazy(() => import('../dashboard'));
+const Marketplace = React.lazy(() => import('../Marketplace'));
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
@@ -31,9 +33,9 @@ function Layout() {
             <Suspense fallback={<Loader />}>
                 {loading && <Loader />}
                 <Box>
-                    <div className={classes.mainWrapper}>
+                    <Grid container xs={12} className={classes.mainWrapper}>
                         <Header />
-                        <Box className={classes.content}>
+                        <Box className={classes.content} style={{ width: '100%' }}>
                             <Suspense fallback={<Loader />}>
                                 <Switch>
                                     <Route path={Routes.dashboard} component={Dashboard} />
@@ -41,7 +43,7 @@ function Layout() {
                                 </Switch>
                             </Suspense>
                         </Box>
-                    </div>
+                    </Grid>
                 </Box>
             </Suspense>
         </ErrorBoundary>

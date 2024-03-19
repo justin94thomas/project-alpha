@@ -21,7 +21,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '13px',
         padding: '10px 24px',
         textTransform: 'capitalize',
-        justifyContent: 'left'
+        justifyContent: 'left',
+        '&:hover': {
+            background: '#2763FF',
+            color: '#fff',
+        }
     },
     navButton: {
         background: '#fff',
