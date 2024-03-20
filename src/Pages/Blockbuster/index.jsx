@@ -6,6 +6,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import BlockbusterDashboard from './Components/Dashboard';
 import BlockbusterPreview from './Components/Dashboard/preview';
+import WatchOnline from './Components/Watch-Online';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -105,7 +106,25 @@ const Blockbuster = () => {
             watchOnline: false
         })
     }
-
+    const watchOnline = (movie) => {
+        setPreviewMovie(movie);
+        setOpenScreen({
+            dashboard: false,
+            preview: false,
+            bookings: false,
+            seatSelection: false,
+            watchOnline: true
+        })
+    }
+    const closePreview = () => {
+        setOpenScreen({
+            dashboard: false,
+            preview: true,
+            bookings: false,
+            seatSelection: false,
+            watchOnline: false
+        })
+    }
     return (
         <div className="blockbuster-main">
             <Grid container xs={12} className={classes.main}>
@@ -113,7 +132,8 @@ const Blockbuster = () => {
                     <Header handleNavigateDashboard={handleNavigateDashboard} handleMyBookings={handleMyBookings} />
                 </Grid>
                 {openScreen.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
-                {openScreen.preview && <BlockbusterPreview previewMovie={previewMovie} handleNavigateDashboard={handleNavigateDashboard} />}
+                {openScreen.preview && <BlockbusterPreview previewMovie={previewMovie} watchOnline={watchOnline} />}
+                {openScreen.watchOnline && <WatchOnline previewMovie={previewMovie} closePreview={closePreview} />}
             </Grid>
         </div>
     )

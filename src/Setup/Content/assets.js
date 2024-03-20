@@ -5,6 +5,8 @@ import { IoShirtOutline } from "react-icons/io5";
 import { BiCameraMovie } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
 import { MdSlowMotionVideo } from "react-icons/md";
+import { FaBars } from "react-icons/fa";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 
 const images = {
@@ -20,7 +22,9 @@ const icons = {
     Clothing: IoShirtOutline,
     BookingsIcon: BiCameraMovie,
     RatingsStarIcon: FaRegStar,
-    VideoRuntime: MdSlowMotionVideo
+    VideoRuntime: MdSlowMotionVideo,
+    Sidebar: FaBars,
+    Close: IoMdCloseCircleOutline
 }
 
 export { images, icons }

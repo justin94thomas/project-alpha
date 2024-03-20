@@ -91,14 +91,16 @@ const useStyles = makeStyles((theme) => ({
         placeItems: 'center',
         marginBottom: '20px',
         width: 170
+    },
+    buttonMain: {
+        textTransform: 'capitalize'
     }
 }))
-const BlockbusterPreview = ({ previewMovie, handleNavigateDashboard }) => {
+const BlockbusterPreview = ({ previewMovie, watchOnline }) => {
     const classes = useStyles();
     const [selectedMovie, setSelectedMovie] = useState(previewMovie);
     const { RatingsStarIcon, VideoRuntime, AccountCircleIcon } = icons;
 
-    const watchOnline = () => { }
     return (
         <Grid xs={12} className={classes.mainBody}>
             <Grid container xs={12} className={classes.movieDetails1}
@@ -113,8 +115,9 @@ const BlockbusterPreview = ({ previewMovie, handleNavigateDashboard }) => {
                     <Typography varient='h1' className={classes.movieGenre}><VideoRuntime className={classes.runTime} />{selectedMovie.runTime}</Typography>
                     <Typography varient='h1' className={classes.movieSynopsis}>{selectedMovie.synopsis}</Typography>
                     <div className={classes.buttonsDiv}>
-                        <Button variant="contained" color="secondary" onClick={() => watchOnline()}>Watch Online</Button>
-                        <Button variant="contained" color="secondary" onClick={() => watchOnline()}>Book Tickets</Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'trailer' })}>Watch Trailer</Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'movie' })}>Watch Movie</Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline(selectedMovie)}>Book Tickets</Button>
                     </div>
                 </Grid>
             </Grid>
