@@ -25,7 +25,11 @@ const useStyles = makeStyles((theme) => ({
     },
     movieBox: {
         padding: '10px',
-        textAlign: '-webkit-center'
+        textAlign: '-webkit-center',
+        cursor: 'pointer',
+        '&:hover': {
+            boxShadow: '8px 4px 8px 1px rgba(0, 0, 0, 0.2), 16px 6px 20px 1px rgba(0, 0, 0, 0.19), -8px 16px 12px -2px rgba(0, 0, 0, 0.2)'
+        }
     },
     movieName: {
         display: 'block',
@@ -46,7 +50,16 @@ const useStyles = makeStyles((theme) => ({
     },
     movieCardMain: {
         display: 'flex',
-        gap: 10
+        gap: 10,
+        overflowY: 'auto',
+        '&::-webkit-scrollbar': {
+            width: '5px',
+            height: '8px',
+            backgroundColor: '#aaa',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: '#000'
+        }
     },
     itemDetails: {
         width: '100%'
@@ -58,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const InTheaters = ({ movieData }) => {
+const InTheaters = ({ movieData, handleSelectedMovie }) => {
     const classes = useStyles();
     const { t } = useTranslation();
     const { RatingsStarIcon } = icons;
@@ -77,7 +90,7 @@ const InTheaters = ({ movieData }) => {
                     <>
 
                         {movieData.map((item, index) => {
-                            return <Grid item className={classes.movieBox} key={index}>
+                            return <Grid item className={classes.movieBox} key={index} onClick={() => handleSelectedMovie(item)}>
                                 <div style={{ borderRadius: '4px' }}>
                                     <Box className={classes.cardImgBox}>
                                         <img src={item.image} className={classes.movieImg} />

@@ -16,6 +16,18 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         width: '100%'
     },
+    content: {
+        height: '90vh',
+        overflowY: 'auto',
+        '&::-webkit-scrollbar': {
+            width: '5px',
+            height: '8px',
+            backgroundColor: '#aaa',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: '#000'
+        }
+    }
 }))
 
 function Layout() {

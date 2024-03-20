@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     mainBody: {
         display: 'flex',
         gap: 10,
-        padding: 10,
         justifyContent: 'space-around'
     },
     movieSection: {
@@ -36,11 +35,10 @@ const useStyles = makeStyles((theme) => ({
         }
     }
 }))
-const BlockbusterDashboard = () => {
+const BlockbusterDashboard = ({ handleSelectedMovie }) => {
     const classes = useStyles();
     const [inTheaters, setInTheaters] = useState([]);
     const [upcommingMovies, setUpcommingMovies] = useState([]);
-
 
     useEffect(() => {
         if (MovieData.Movies) {
@@ -51,14 +49,13 @@ const BlockbusterDashboard = () => {
         }
     }, [MovieData])
 
-
     return (
         <Grid container xs={12} className={classes.mainBody}>
             <Grid item xs={8} className={classes.movieSection}>
-                <InTheaters movieData={inTheaters} />
+                <InTheaters movieData={inTheaters} handleSelectedMovie={handleSelectedMovie} />
             </Grid>
             <Grid item xs={3} className={classes.upcomingMovies}>
-                <MovieCardUpcomming movieData={upcommingMovies} />
+                <MovieCardUpcomming movieData={upcommingMovies} handleSelectedMovie={handleSelectedMovie} />
             </Grid>
         </Grid>
     )
