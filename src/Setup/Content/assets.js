@@ -4,6 +4,11 @@ import { PiSneakerDuotone } from "react-icons/pi";
 import { IoShirtOutline } from "react-icons/io5";
 import { BiCameraMovie } from "react-icons/bi";
 import { FaRegStar } from "react-icons/fa";
+import { MdSlowMotionVideo } from "react-icons/md";
+import { FaBars } from "react-icons/fa";
+import { IoMdCloseCircleOutline } from "react-icons/io";
+
+
 const images = {
     marketplaceLogo: 'https://as2.ftcdn.net/v2/jpg/01/95/78/87/1000_F_195788717_Ba8397mYBadW3JUx5SQejAxpRN02DyEF.jpg',
     emptyCart: 'https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png',
@@ -16,7 +21,10 @@ const icons = {
     Sneakers: PiSneakerDuotone,
     Clothing: IoShirtOutline,
     BookingsIcon: BiCameraMovie,
-    RatingsStarIcon: FaRegStar
+    RatingsStarIcon: FaRegStar,
+    VideoRuntime: MdSlowMotionVideo,
+    Sidebar: FaBars,
+    Close: IoMdCloseCircleOutline
 }
 
 export { images, icons }

@@ -5,6 +5,8 @@ import { images, icons } from '../../Setup/Content/assets';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import BlockbusterDashboard from './Components/Dashboard';
+import BlockbusterPreview from './Components/Dashboard/preview';
+import WatchOnline from './Components/Watch-Online';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -47,11 +49,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-const Header = ({ handleNavigateDashboard }) => {
+const Header = ({ handleNavigateDashboard, handleMyBookings }) => {
     const classes = useStyles();
     const { BookingsIcon } = icons;
     const { state, dispatch } = ''; // useMarketplaceContext();
-    const handleMyBookings = () => { }
 
     return (
         <Grid container xs={12}>
@@ -74,9 +75,11 @@ const Header = ({ handleNavigateDashboard }) => {
 }
 const Blockbuster = () => {
     const classes = useStyles();
+    const [previewMovie, setPreviewMovie] = useState({});
 
     const [openScreen, setOpenScreen] = useState({
         dashboard: true,
+        preview: false,
         bookings: false,
         seatSelection: false,
         watchOnline: false
@@ -85,6 +88,38 @@ const Blockbuster = () => {
     const handleNavigateDashboard = () => {
         setOpenScreen({
             dashboard: true,
+            preview: false,
+            bookings: false,
+            seatSelection: false,
+            watchOnline: false
+        })
+    }
+    const handleMyBookings = () => { }
+
+    const handleSelectedMovie = (movie) => {
+        setPreviewMovie(movie);
+        setOpenScreen({
+            dashboard: false,
+            preview: true,
+            bookings: false,
+            seatSelection: false,
+            watchOnline: false
+        })
+    }
+    const watchOnline = (movie) => {
+        setPreviewMovie(movie);
+        setOpenScreen({
+            dashboard: false,
+            preview: false,
+            bookings: false,
+            seatSelection: false,
+            watchOnline: true
+        })
+    }
+    const closePreview = () => {
+        setOpenScreen({
+            dashboard: false,
+            preview: true,
             bookings: false,
             seatSelection: false,
             watchOnline: false
@@ -94,9 +129,11 @@ const Blockbuster = () => {
         <div className="blockbuster-main">
             <Grid container xs={12} className={classes.main}>
                 <Grid item xs={12} className={classes.mainHeader}>
-                    <Header handleNavigateDashboard={handleNavigateDashboard} />
+                    <Header handleNavigateDashboard={handleNavigateDashboard} handleMyBookings={handleMyBookings} />
                 </Grid>
-                {openScreen.dashboard && <BlockbusterDashboard />}
+                {openScreen.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
+                {openScreen.preview && <BlockbusterPreview previewMovie={previewMovie} watchOnline={watchOnline} />}
+                {openScreen.watchOnline && <WatchOnline previewMovie={previewMovie} closePreview={closePreview} />}
             </Grid>
         </div>
     )

@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         border: '1px solid #ccc',
         borderRadius: '8px',
-        height: '132px'
+        height: '132px',
+        cursor: 'pointer',
+        '&:hover': {
+            boxShadow: '0 3px 12px 0px rgba(0, 0, 0, 0.2), 0 0px 8px -9px rgba(0, 0, 0, 0.19)'
+        }
     },
     cardImgBox: {
         display: 'flex',
@@ -52,7 +56,16 @@ const useStyles = makeStyles((theme) => ({
     movieCardMain: {
         display: 'flex',
         gap: 10,
-        padding: '10px 0px'
+        padding: '10px 0px',
+        overflowY: 'auto',
+        '&::-webkit-scrollbar': {
+            width: '5px',
+            height: '8px',
+            backgroundColor: '#aaa',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: '#000'
+        }
     },
     movieDescription: {
         fontSize: '12px',
@@ -78,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const MovieCardUpcomming = ({ movieData }) => {
+const MovieCardUpcomming = ({ movieData, handleSelectedMovie }) => {
     const classes = useStyles();
     const { t } = useTranslation();
     const { RatingsStarIcon } = icons;
@@ -95,7 +108,7 @@ const MovieCardUpcomming = ({ movieData }) => {
                 {movieData && movieData.length > 0 ?
                     <>
                         {movieData.map((item, index) => {
-                            return <div className={classes.movieBox} key={index}>
+                            return <div className={classes.movieBox} key={index} onClick={() => handleSelectedMovie(item)}>
                                 <div className={classes.cardImgBox}>
                                     <img src={item.image} className={classes.movieImg} />
                                 </div>
