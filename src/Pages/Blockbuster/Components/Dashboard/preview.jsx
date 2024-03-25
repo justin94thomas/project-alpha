@@ -116,9 +116,15 @@ const BlockbusterPreview = ({ watchOnline, handleBookTickets }) => {
                     <Typography varient='h1' className={classes.movieGenre}><VideoRuntime className={classes.runTime} />{selectedMovie.runTime}</Typography>
                     <Typography varient='h1' className={classes.movieSynopsis}>{selectedMovie.synopsis}</Typography>
                     <div className={classes.buttonsDiv}>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'trailer' })}>Watch Trailer</Button>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'movie' })}>Watch Movie</Button>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => handleBookTickets(selectedMovie)}>Book Tickets</Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => watchOnline({ ...selectedMovie, mode: 'trailer' })}>Watch Trailer
+                        </Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => watchOnline({ ...selectedMovie, mode: 'movie' })}>Watch Movie
+                        </Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => handleBookTickets(selectedMovie)}>Book Tickets
+                        </Button>
                     </div>
                 </Grid>
             </Grid>

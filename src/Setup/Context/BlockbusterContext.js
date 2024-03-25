@@ -8,7 +8,7 @@ const initialState = {
     selectedMovie: null,
     selectedTheater: null,
     selectedTiming: null,
-    numSeats: 0,
+    numSeats: 1,
     bookedSeats: [],
     movieLibrary: [],
     openScreen: {
@@ -17,13 +17,16 @@ const initialState = {
         bookings: false,
         bookTickets: false,
         watchOnline: false
-    }
+    },
+    seats: BlockbusterData.Seats
 }
 
 const reducer = (state, action) => {
     switch (action.type) {
         case 'UPDATE_CURRENT_SCREEN':
             return { ...state, openScreen: action.payload };
+        case 'UPDATE_SELECTED_SEAT':
+            return { ...state, seats: action.payload };
         case 'SELECT_MOVIE':
             return { ...state, selectedMovie: action.payload };
         case 'SELECT_THEATER':
