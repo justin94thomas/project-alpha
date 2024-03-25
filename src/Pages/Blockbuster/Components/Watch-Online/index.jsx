@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid, IconButton, makeStyles, Dialog, DialogContent, Typography } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import { images, icons } from '../../../../Setup/Content/assets';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,12 +34,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const WatchOnline = ({ previewMovie, closePreview }) => {
+const WatchOnline = ({ closePreview }) => {
     const classes = useStyles();
     const { Sidebar, Close } = icons;
+    const { state, dispatch } = useBlockbusterContext();
     const [url, setUrl] = useState('');
 
     useEffect(() => {
+        let previewMovie = state?.selectedMovie;
         if (previewMovie) {
             if (previewMovie.mode === 'trailer') {
                 setUrl(previewMovie.trailer)
@@ -48,7 +51,7 @@ const WatchOnline = ({ previewMovie, closePreview }) => {
                 setUrl('')
             }
         }
-    }, [previewMovie])
+    }, [state])
     return (
         <Grid xs={12} className={classes.mainBody}>
             <Grid container xs={12} className={classes.movieDetails1}>
