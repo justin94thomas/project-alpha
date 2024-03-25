@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
-import './blockbuster.css';
-import { images, icons } from '../../Setup/Content/assets';
-import { MdOutlineShoppingCart } from "react-icons/md";
+import { Grid, Box, makeStyles } from '@material-ui/core';
 import { FaUserCircle } from "react-icons/fa";
+import { BlockbusterProvider, useBlockbusterContext } from '../../Setup/Context/BlockbusterContext';
 import BlockbusterDashboard from './Components/Dashboard';
 import BlockbusterPreview from './Components/Dashboard/preview';
 import WatchOnline from './Components/Watch-Online';
+import BookTickets from './Components/Book-Tickets';
+import { images, icons } from '../../Setup/Content/assets';
+import './blockbuster.css';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -48,22 +49,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-
 const Header = ({ handleNavigateDashboard, handleMyBookings }) => {
     const classes = useStyles();
     const { BookingsIcon } = icons;
-    const { state, dispatch } = ''; // useMarketplaceContext();
+    const { state } = useBlockbusterContext();
 
     return (
-        <Grid container xs={12}>
+        <Grid container className={classes.mainHeader}>
             <Grid item xs={11}>
-                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} />
+                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} alt="Blockbuster Logo" />
             </Grid>
             <Grid item xs={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
                         <BookingsIcon size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
-                        {state?.bookings.length > 0 ? <span className={classes.addedToCart}>{state?.bookings.length}</span> : null}
+                        {state?.bookedSeats?.length > 0 ? <span className={classes.addedToCart}>{state?.bookedSeats?.length}</span> : null}
                     </div>
                 </Box>
                 <Box className={classes.navBackground}>
@@ -73,68 +73,86 @@ const Header = ({ handleNavigateDashboard, handleMyBookings }) => {
         </Grid>
     )
 }
+
 const Blockbuster = () => {
     const classes = useStyles();
-    const [previewMovie, setPreviewMovie] = useState({});
-
+    const { state, dispatch } = useBlockbusterContext();
     const [openScreen, setOpenScreen] = useState({
         dashboard: true,
         preview: false,
         bookings: false,
-        seatSelection: false,
+        bookTickets: false,
         watchOnline: false
-    })
+    });
 
     const handleNavigateDashboard = () => {
         setOpenScreen({
             dashboard: true,
             preview: false,
             bookings: false,
-            seatSelection: false,
+            bookTickets: false,
             watchOnline: false
         })
-    }
-    const handleMyBookings = () => { }
+    };
 
-    const handleSelectedMovie = (movie) => {
-        setPreviewMovie(movie);
-        setOpenScreen({
-            dashboard: false,
-            preview: true,
-            bookings: false,
-            seatSelection: false,
-            watchOnline: false
-        })
-    }
-    const watchOnline = (movie) => {
-        setPreviewMovie(movie);
+    const handleMyBookings = () => { };
+
+    const handleBookTickets = (movie) => {
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
         setOpenScreen({
             dashboard: false,
             preview: false,
             bookings: false,
-            seatSelection: false,
-            watchOnline: true
+            bookTickets: true,
+            watchOnline: false
         })
-    }
-    const closePreview = () => {
+    };
+
+    const handleSelectedMovie = (movie) => {
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
         setOpenScreen({
             dashboard: false,
             preview: true,
             bookings: false,
-            seatSelection: false,
+            bookTickets: false,
             watchOnline: false
         })
-    }
+    };
+
+    const watchOnlineMovie = (movie) => {
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
+        setOpenScreen({
+            dashboard: false,
+            preview: false,
+            bookings: false,
+            bookTickets: false,
+            watchOnline: true
+        })
+    };
+
+    const closePreview = () => {
+        setOpenScreen({
+            dashboard: true,
+            preview: false,
+            bookings: false,
+            bookTickets: false,
+            watchOnline: false
+        })
+    };
+
     return (
         <div className="blockbuster-main">
-            <Grid container xs={12} className={classes.main}>
-                <Grid item xs={12} className={classes.mainHeader}>
-                    <Header handleNavigateDashboard={handleNavigateDashboard} handleMyBookings={handleMyBookings} />
+            <BlockbusterProvider>
+                <Grid container className={classes.main}>
+                    <Grid item xs={12} className={classes.mainHeader}>
+                        <Header handleNavigateDashboard={handleNavigateDashboard} handleMyBookings={handleMyBookings} />
+                    </Grid>
+                    {openScreen.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
+                    {openScreen.preview && <BlockbusterPreview watchOnline={watchOnlineMovie} handleBookTickets={handleBookTickets} />}
+                    {openScreen.watchOnline && <WatchOnline closePreview={closePreview} />}
+                    {openScreen.bookTickets && <BookTickets />}
                 </Grid>
-                {openScreen.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
-                {openScreen.preview && <BlockbusterPreview previewMovie={previewMovie} watchOnline={watchOnline} />}
-                {openScreen.watchOnline && <WatchOnline previewMovie={previewMovie} closePreview={closePreview} />}
-            </Grid>
+            </BlockbusterProvider>
         </div>
     )
 }
