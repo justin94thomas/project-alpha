@@ -63,10 +63,24 @@ const useStyles = makeStyles((theme) => ({
     runTime1: {
         marginRight: 5
     },
+    theaterBox: {
+        background: '#fff',
+        height: '88%',
+        margin: 20,
+        '&::-webkit-scrollbar': {
+            width: '5px',
+            height: '8px',
+            backgroundColor: '#aaa',
+        },
+        '&::-webkit-scrollbar-thumb': {
+            background: '#000'
+        }
+    },
     theaterMain: {
         textAlign: 'left',
         padding: 30,
-        borderBottom: '1px solid #ccc'
+        borderBottom: '1px solid #ccc',
+        gap: 20
     },
     theatersTitle: {
         fontWeight: 600
@@ -118,8 +132,8 @@ const BookTickets = () => {
     }
 
     return (
-        <Grid container xs={12} className={classes.bookTicketsMain} justifyContent='center'>
-            <Grid item xs={12} className={classes.movieHeaders}>
+        <Grid container lg={12} className={classes.bookTicketsMain} justifyContent='center'>
+            <Grid item lg={12} className={classes.movieHeaders}>
                 <Grid container lg={12} style={{ borderBottom: '1px solid #ccc', padding: 10 }}>
                     <Grid item style={{ marginLeft: 10 }}>
                         <img src={selectedMovie.image} width={100} />
@@ -131,14 +145,14 @@ const BookTickets = () => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid container xs={12} justifyContent='center' style={{ marginTop: 5, background: '#ccc', height: '50vh' }}>
-                <Grid item xs={10} style={{ background: '#fff', height: '88%', margin: 20 }}>
+            <Grid container lg={12} justifyContent='center' style={{ marginTop: 5, background: '#ccc' }}>
+                <Grid item lg={10} xs={12} className={classes.theaterBox}>
                     {selectedMovie.theaters.map(item => {
-                        return <Grid container xs={12} className={classes.theaterMain}>
-                            <Grid item xs={4} style={{ overflow: 'hidden', width: '100%' }}>
+                        return <Grid container lg={12} className={classes.theaterMain}>
+                            <Grid item md={4} xs={12} style={{ overflow: 'hidden', width: '100%' }}>
                                 <Typography className={classes.theatersTitle}>{item.name}</Typography>
                             </Grid>
-                            <Grid item xs={8}>
+                            <Grid item md={8} xs={12} >
                                 {item.timings.map(timings => <span className={classes.timingBox} onClick={() => handleSelectTimings(item, timings)} style={{ color: 'green' }}>{timings}</span>)}
                             </Grid>
                         </Grid>
@@ -150,11 +164,11 @@ const BookTickets = () => {
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={dialogOpen}>
                 <DialogContent dividers>
                     <Grid container style={{ marginTop: 40, textAlign: '-webkit-center' }}>
-                        <Grid item xs={12}>
+                        <Grid item lg={12}>
                             <Typography>How many seats?</Typography>
                             <img src={activeSeat?.img} width={200} />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item lg={12}>
                             <ul className={classes.seatMain}>
                                 {selectedSeats.length > 0 && selectedSeats.map((select, index) => {
                                     return <>

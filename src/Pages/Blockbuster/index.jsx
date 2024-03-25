@@ -65,10 +65,10 @@ const Header = () => {
 
     return (
         <Grid container>
-            <Grid item xs={11}>
+            <Grid item xs={12}>
                 <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} alt="Blockbuster Logo" />
             </Grid>
-            <Grid item xs={1} className={classes.profile}>
+            {/* <Grid item xs={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
                         <BookingsIcon size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
@@ -78,7 +78,7 @@ const Header = () => {
                 <Box className={classes.navBackground}>
                     <FaUserCircle size={20} />
                 </Box>
-            </Grid>
+            </Grid> */}
         </Grid>
     )
 }
