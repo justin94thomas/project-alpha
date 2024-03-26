@@ -95,11 +95,7 @@ const MovieCardUpcomming = ({ movieData, handleSelectedMovie }) => {
     const classes = useStyles();
     const { t } = useTranslation();
     const { RatingsStarIcon } = icons;
-    useEffect(() => {
-        if (movieData) {
-            console.log(movieData, "movieData")
-        }
-    }, [movieData])
+
 
     return (
         <>

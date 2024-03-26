@@ -76,11 +76,6 @@ const InTheaters = ({ movieData, handleSelectedMovie }) => {
     const { t } = useTranslation();
     const { RatingsStarIcon } = icons;
 
-    useEffect(() => {
-        if (movieData) {
-            console.log(movieData, "movieData")
-        }
-    }, [movieData])
 
     return (
         <>

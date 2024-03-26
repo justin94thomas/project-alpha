@@ -110,11 +110,6 @@ const Header = (props) => {
     const [value, setValue] = React.useState(0);
     const { state, dispatch } = useMarketplaceContext();
 
-    useEffect(() => {
-        if (state?.cart?.length > 0) {
-            console.log('cart data', state?.cart);
-        }
-    }, [state])
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
