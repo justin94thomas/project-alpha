@@ -1,8 +1,9 @@
 // Layout.js
 import React, { lazy, Suspense, useState } from "react";
+import { useTheme } from '@material-ui/core/styles';
 import { Link, Route, Switch } from 'react-router-dom';
 import Routes from '../../Setup/routes-manager/routes.json';
-import { Grid, Box, makeStyles } from '@material-ui/core';
+import { Grid, Box, makeStyles, useMediaQuery } from '@material-ui/core';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
 import Header from "../../Components/Header";
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%'
     },
     content: {
-        height: '90vh',
+        width: '100%',
         overflowY: 'auto',
         '&::-webkit-scrollbar': {
             width: '5px',
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 function Layout() {
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <ErrorBoundary
@@ -46,7 +49,7 @@ function Layout() {
                 <Box>
                     <Grid container xs={12} className={classes.mainWrapper}>
                         <Header />
-                        <Box className={classes.content} style={{ width: '100%' }}>
+                        <Box className={classes.content} style={isMobile ? { height: '65vh' } : { height: '90vh' }}>
                             <Suspense fallback={<Loader />}>
                                 <Switch>
                                     <Route path={Routes.dashboard} component={Dashboard} />

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab, Button } from '@material-ui/core';
 import '../../blockbuster.css';
 import { images, icons } from '../../../../Setup/Content/assets';
-
+import { BlockbusterProvider, useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     mainBody: {
@@ -96,9 +96,10 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'capitalize'
     }
 }))
-const BlockbusterPreview = ({ previewMovie, watchOnline }) => {
+const BlockbusterPreview = ({ watchOnline, handleBookTickets }) => {
     const classes = useStyles();
-    const [selectedMovie, setSelectedMovie] = useState(previewMovie);
+    const { state, dispatch } = useBlockbusterContext();
+    const [selectedMovie, setSelectedMovie] = useState(state.selectedMovie);
     const { RatingsStarIcon, VideoRuntime, AccountCircleIcon } = icons;
 
     return (
@@ -115,9 +116,15 @@ const BlockbusterPreview = ({ previewMovie, watchOnline }) => {
                     <Typography varient='h1' className={classes.movieGenre}><VideoRuntime className={classes.runTime} />{selectedMovie.runTime}</Typography>
                     <Typography varient='h1' className={classes.movieSynopsis}>{selectedMovie.synopsis}</Typography>
                     <div className={classes.buttonsDiv}>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'trailer' })}>Watch Trailer</Button>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline({ ...selectedMovie, mode: 'movie' })}>Watch Movie</Button>
-                        <Button variant="contained" color="secondary" className={classes.buttonMain} onClick={() => watchOnline(selectedMovie)}>Book Tickets</Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => watchOnline({ ...selectedMovie, mode: 'trailer' })}>Watch Trailer
+                        </Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => watchOnline({ ...selectedMovie, mode: 'movie' })}>Watch Movie
+                        </Button>
+                        <Button variant="contained" color="secondary" className={classes.buttonMain}
+                            onClick={() => handleBookTickets(selectedMovie)}>Book Tickets
+                        </Button>
                     </div>
                 </Grid>
             </Grid>

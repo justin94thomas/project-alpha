@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
-import './blockbuster.css';
-import { images, icons } from '../../Setup/Content/assets';
-import { MdOutlineShoppingCart } from "react-icons/md";
+import React, { useEffect, useState } from 'react';
+import { Grid, Box, makeStyles } from '@material-ui/core';
 import { FaUserCircle } from "react-icons/fa";
+import { BlockbusterProvider, useBlockbusterContext } from '../../Setup/Context/BlockbusterContext';
 import BlockbusterDashboard from './Components/Dashboard';
 import BlockbusterPreview from './Components/Dashboard/preview';
 import WatchOnline from './Components/Watch-Online';
+import BookTickets from './Components/Book-Tickets';
+import { images, icons } from '../../Setup/Content/assets';
+import './blockbuster.css';
+import BookedTickets from './Components/Bookings';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -48,95 +50,103 @@ const useStyles = makeStyles((theme) => ({
     },
 }))
 
-
-const Header = ({ handleNavigateDashboard, handleMyBookings }) => {
+const Header = () => {
     const classes = useStyles();
     const { BookingsIcon } = icons;
-    const { state, dispatch } = ''; // useMarketplaceContext();
+    const { state, dispatch } = useBlockbusterContext();
+
+    const handleNavigateDashboard = () => {
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, dashboard: true } });
+    };
+
+    const handleMyBookings = () => {
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, bookings: true } });
+    };
 
     return (
-        <Grid container xs={12}>
-            <Grid item xs={11}>
-                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} />
+        <Grid container>
+            <Grid item lg={11}>
+                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} alt="Blockbuster Logo" />
             </Grid>
-            <Grid item xs={1} className={classes.profile}>
+            <Grid item lg={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
                         <BookingsIcon size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
-                        {state?.bookings.length > 0 ? <span className={classes.addedToCart}>{state?.bookings.length}</span> : null}
+                        {state?.bookedSeats?.length > 0 ? <span className={classes.addedToCart}>{state?.bookedSeats?.length}</span> : null}
                     </div>
-                </Box>
-                <Box className={classes.navBackground}>
-                    <FaUserCircle size={20} />
                 </Box>
             </Grid>
         </Grid>
     )
 }
+
 const Blockbuster = () => {
-    const classes = useStyles();
-    const [previewMovie, setPreviewMovie] = useState({});
+    const { state, dispatch } = useBlockbusterContext();
 
-    const [openScreen, setOpenScreen] = useState({
-        dashboard: true,
-        preview: false,
-        bookings: false,
-        seatSelection: false,
-        watchOnline: false
-    })
-
-    const handleNavigateDashboard = () => {
-        setOpenScreen({
-            dashboard: true,
-            preview: false,
-            bookings: false,
-            seatSelection: false,
-            watchOnline: false
-        })
-    }
-    const handleMyBookings = () => { }
+    const handleBookTickets = (movie) => {
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, bookTickets: true } });
+    };
 
     const handleSelectedMovie = (movie) => {
-        setPreviewMovie(movie);
-        setOpenScreen({
-            dashboard: false,
-            preview: true,
-            bookings: false,
-            seatSelection: false,
-            watchOnline: false
-        })
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, preview: true } });
     }
-    const watchOnline = (movie) => {
-        setPreviewMovie(movie);
-        setOpenScreen({
-            dashboard: false,
-            preview: false,
-            bookings: false,
-            seatSelection: false,
-            watchOnline: true
-        })
-    }
+
+    const watchOnlineMovie = (movie) => {
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'SELECT_MOVIE', payload: { ...movie } });
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, watchOnline: true } });
+    };
+
     const closePreview = () => {
-        setOpenScreen({
-            dashboard: false,
-            preview: true,
-            bookings: false,
-            seatSelection: false,
-            watchOnline: false
-        })
-    }
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, dashboard: true } });
+    };
+
+
+    return (
+        <>
+            {state?.openScreen?.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
+            {state?.openScreen?.preview && <BlockbusterPreview watchOnline={watchOnlineMovie} handleBookTickets={handleBookTickets} />}
+            {state?.openScreen?.watchOnline && <WatchOnline closePreview={closePreview} />}
+            {state?.openScreen?.bookTickets && <BookTickets ticketsConfirmed={closePreview} />}
+            {state?.openScreen?.bookings && <BookedTickets />}
+        </>
+    )
+}
+
+const BlockbusterMain = () => {
+    const classes = useStyles();
+
     return (
         <div className="blockbuster-main">
-            <Grid container xs={12} className={classes.main}>
-                <Grid item xs={12} className={classes.mainHeader}>
-                    <Header handleNavigateDashboard={handleNavigateDashboard} handleMyBookings={handleMyBookings} />
+            <BlockbusterProvider>
+                <Grid container className={classes.main}>
+                    <Grid item xs={12} className={classes.mainHeader}>
+                        <Header />
+                    </Grid>
+                    <Blockbuster />
                 </Grid>
-                {openScreen.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
-                {openScreen.preview && <BlockbusterPreview previewMovie={previewMovie} watchOnline={watchOnline} />}
-                {openScreen.watchOnline && <WatchOnline previewMovie={previewMovie} closePreview={closePreview} />}
-            </Grid>
+            </BlockbusterProvider>
         </div>
     )
 }
 
-export default Blockbuster;
+export default BlockbusterMain;

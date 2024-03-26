@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
+import { Grid, Box, Typography, makeStyles, withStyles } from '@material-ui/core';
 import '../../blockbuster.css';
 import InTheaters from './inTheaters.jsx';
-import MovieData from '../../data.json';
 import MovieCardUpcomming from './upcommingCard.jsx';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     mainBody: {
@@ -39,15 +39,16 @@ const BlockbusterDashboard = ({ handleSelectedMovie }) => {
     const classes = useStyles();
     const [inTheaters, setInTheaters] = useState([]);
     const [upcommingMovies, setUpcommingMovies] = useState([]);
+    const { state, dispatch } = useBlockbusterContext();
 
     useEffect(() => {
-        if (MovieData.Movies) {
-            let inTheaters = MovieData?.Movies.filter(val => val.status === 'in-theaters');
-            let upCommingMovies = MovieData?.Movies.filter(val => val.status === 'upcoming');
+        if (state?.movies) {
+            let inTheaters = state?.movies.filter(val => val.status === 'in-theaters');
+            let upCommingMovies = state?.movies.filter(val => val.status === 'upcoming');
             setInTheaters(inTheaters);
             setUpcommingMovies(upCommingMovies)
         }
-    }, [MovieData])
+    }, [state])
 
     return (
         <Grid container xs={12} className={classes.mainBody}>
