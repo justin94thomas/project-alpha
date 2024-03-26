@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography, makeStyles, withStyles, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 import { images, icons } from '../../../../Setup/Content/assets';
+import SeatSelector from './seatSelector';
 
 const useStyles = makeStyles((theme) => ({
     seatMain: {
@@ -65,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     },
     theaterBox: {
         background: '#fff',
-        height: '88%',
+        height: '92%',
         margin: 20,
         '&::-webkit-scrollbar': {
             width: '5px',
@@ -84,17 +85,19 @@ const useStyles = makeStyles((theme) => ({
     },
     theatersTitle: {
         fontWeight: 600
-    }
+    },
 }))
 
-const BookTickets = () => {
+const BookTickets = ({ ticketsConfirmed }) => {
     const classes = useStyles();
-    const { RatingsStarIcon, VideoRuntime, AccountCircleIcon } = icons;
+    const { VideoRuntime, Seat } = icons;
     const { state, dispatch } = useBlockbusterContext();
     const [selectedSeats, setSelectedSeats] = useState(state.seats);
     const [selectedMovie, setSelectedMovie] = useState(state.selectedMovie);
     const [activeSeat, setActiveSeat] = useState();
     const [dialogOpen, setDialogOpen] = useState(false);
+    const [openSeatSelection, setOpenSeatSelection] = useState(false);
+
     const handleHoveredSelection = (hover) => {
         setActiveSeat(hover);
     }
@@ -120,7 +123,8 @@ const BookTickets = () => {
     }, [selectedSeats])
 
     const handleClose = () => {
-        setDialogOpen(false)
+        setDialogOpen(false);
+        setOpenSeatSelection(true);
     }
     const handleOpen = () => {
         setDialogOpen(true)
@@ -133,33 +137,41 @@ const BookTickets = () => {
 
     return (
         <Grid container lg={12} className={classes.bookTicketsMain} justifyContent='center'>
-            <Grid item lg={12} className={classes.movieHeaders}>
-                <Grid container lg={12} style={{ borderBottom: '1px solid #ccc', padding: 10 }}>
-                    <Grid item style={{ marginLeft: 10 }}>
-                        <img src={selectedMovie.image} width={100} />
-                    </Grid>
-                    <Grid item style={{ marginLeft: 30 }}>
-                        <Typography className={classes.movieTitle}>{selectedMovie.title}</Typography>
-                        {selectedMovie.genre.map(item => <span className={classes.genre}>{item}</span>)}
-                        <Typography varient='h1' className={classes.runTime}><VideoRuntime className={classes.runTime1} />{selectedMovie.runTime}</Typography>
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid container lg={12} justifyContent='center' style={{ marginTop: 5, background: '#ccc' }}>
-                <Grid item lg={10} xs={12} className={classes.theaterBox}>
-                    {selectedMovie.theaters.map(item => {
-                        return <Grid container lg={12} className={classes.theaterMain}>
-                            <Grid item md={4} xs={12} style={{ overflow: 'hidden', width: '100%' }}>
-                                <Typography className={classes.theatersTitle}>{item.name}</Typography>
+            {/* Select Theaters */}
+            {!openSeatSelection ?
+                <>
+                    <Grid item lg={12} className={classes.movieHeaders}>
+                        <Grid container lg={12} style={{ borderBottom: '1px solid #ccc', padding: 10 }}>
+                            <Grid item style={{ marginLeft: 10 }}>
+                                <img src={selectedMovie.image} width={100} />
                             </Grid>
-                            <Grid item md={8} xs={12} >
-                                {item.timings.map(timings => <span className={classes.timingBox} onClick={() => handleSelectTimings(item, timings)} style={{ color: 'green' }}>{timings}</span>)}
+                            <Grid item style={{ marginLeft: 30 }}>
+                                <Typography className={classes.movieTitle}>{selectedMovie.title}</Typography>
+                                {selectedMovie.genre.map(item => <span className={classes.genre}>{item}</span>)}
+                                <Typography varient='h1' className={classes.runTime}><VideoRuntime className={classes.runTime1} />{selectedMovie.runTime}</Typography>
                             </Grid>
                         </Grid>
-                    })}
-                </Grid>
-            </Grid>
-
+                    </Grid>
+                    <Grid container lg={12} justifyContent='center' style={{ marginTop: 5, background: '#ccc' }}>
+                        <Grid item lg={10} xs={12} className={classes.theaterBox}>
+                            {selectedMovie.theaters.map(item => {
+                                return <Grid container lg={12} className={classes.theaterMain}>
+                                    <Grid item md={4} xs={12} style={{ overflow: 'hidden', width: '100%' }}>
+                                        <Typography className={classes.theatersTitle}>{item.name}</Typography>
+                                    </Grid>
+                                    <Grid item md={8} xs={12} >
+                                        {item.timings.map(timings => <span className={classes.timingBox} onClick={() => handleSelectTimings(item, timings)} style={{ color: 'green' }}>{timings}</span>)}
+                                    </Grid>
+                                </Grid>
+                            })}
+                        </Grid>
+                    </Grid>
+                </> :
+                <>
+                    {/* Select Seats */}
+                    <SeatSelector ticketsConfirmed={ticketsConfirmed} />
+                </>
+            }
             {/* Seat Quantity Selection */}
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={dialogOpen}>
                 <DialogContent dividers>
@@ -190,7 +202,6 @@ const BookTickets = () => {
                 </DialogActions>
 
             </Dialog>
-
         </Grid>
     )
 }

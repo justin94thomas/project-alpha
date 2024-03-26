@@ -8,6 +8,7 @@ import WatchOnline from './Components/Watch-Online';
 import BookTickets from './Components/Book-Tickets';
 import { images, icons } from '../../Setup/Content/assets';
 import './blockbuster.css';
+import BookedTickets from './Components/Bookings';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -61,24 +62,26 @@ const Header = () => {
         dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, dashboard: true } });
     };
 
-    const handleMyBookings = () => { };
+    const handleMyBookings = () => {
+        const updatedOpenScreen = Object.fromEntries(
+            Object.entries(state.openScreen).map(([key, _]) => [key, false])
+        );
+        dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, bookings: true } });
+    };
 
     return (
         <Grid container>
-            <Grid item xs={12}>
+            <Grid item lg={11}>
                 <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} alt="Blockbuster Logo" />
             </Grid>
-            {/* <Grid item xs={1} className={classes.profile}>
+            <Grid item lg={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
                         <BookingsIcon size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
                         {state?.bookedSeats?.length > 0 ? <span className={classes.addedToCart}>{state?.bookedSeats?.length}</span> : null}
                     </div>
                 </Box>
-                <Box className={classes.navBackground}>
-                    <FaUserCircle size={20} />
-                </Box>
-            </Grid> */}
+            </Grid>
         </Grid>
     )
 }
@@ -117,12 +120,14 @@ const Blockbuster = () => {
         dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, dashboard: true } });
     };
 
+
     return (
         <>
             {state?.openScreen?.dashboard && <BlockbusterDashboard handleSelectedMovie={handleSelectedMovie} />}
             {state?.openScreen?.preview && <BlockbusterPreview watchOnline={watchOnlineMovie} handleBookTickets={handleBookTickets} />}
             {state?.openScreen?.watchOnline && <WatchOnline closePreview={closePreview} />}
-            {state?.openScreen?.bookTickets && <BookTickets />}
+            {state?.openScreen?.bookTickets && <BookTickets ticketsConfirmed={closePreview} />}
+            {state?.openScreen?.bookings && <BookedTickets />}
         </>
     )
 }

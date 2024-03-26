@@ -10,7 +10,6 @@ const initialState = {
     selectedTiming: null,
     numSeats: 1,
     bookedSeats: [],
-    movieLibrary: [],
     openScreen: {
         dashboard: true,
         preview: false,
@@ -36,10 +35,7 @@ const reducer = (state, action) => {
         case 'SET_NUM_SEATS':
             return { ...state, numSeats: action.payload };
         case 'ADD_BOOKED_SEAT':
-            return {
-                ...state,
-                bookedSeats: [...state.bookedSeats, action.payload]
-            };
+            return { ...state, bookedSeats: action.payload };
         case 'REMOVE_BOOKED_SEAT':
             return {
                 ...state,
