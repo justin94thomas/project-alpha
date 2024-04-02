@@ -72,12 +72,12 @@ const Header = () => {
     return (
         <Grid container>
             <Grid item lg={11}>
-                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={handleNavigateDashboard} alt="Blockbuster Logo" />
+                <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={() => handleNavigateDashboard()} alt="Blockbuster Logo" />
             </Grid>
             <Grid item lg={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
-                        <BookingsIcon size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
+                        <BookingsIcon id="bookings-icon" size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
                         {state?.bookedSeats?.length > 0 ? <span className={classes.addedToCart}>{state?.bookedSeats?.length}</span> : null}
                     </div>
                 </Box>
