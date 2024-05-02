@@ -8,7 +8,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
 import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
-const Dashboard = React.lazy(() => import('../dashboard'));
+const Dashboard = React.lazy(() => import('../Dashboard'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
 const Blockbuster = React.lazy(() => import('../Blockbuster'));
 
@@ -36,7 +36,6 @@ function Layout() {
     const [loading, setLoading] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
     return (
         <ErrorBoundary
             FallbackComponent={ErrorFallback}

@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import Projects from '../Pages/dashboard/projects.json';
+import Projects from '../Pages/Dashboard/projects.json';
 
 const initialState = {
     dashboardProjects: Projects.Content,
