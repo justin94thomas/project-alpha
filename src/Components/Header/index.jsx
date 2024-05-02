@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     AppBar,
     Toolbar,
@@ -15,10 +15,11 @@ import {
     useTheme,
     makeStyles
 } from '@material-ui/core';
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Autocomplete from '@mui/material/Autocomplete';
 import { icons } from '../../Setup/Content/assets';
 import Routes from '../../Setup/routes-manager/routes.json';
+import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     toolbarSection: {
@@ -26,11 +27,23 @@ const useStyles = makeStyles((theme) => ({
         gap: '10px',
         alignItems: 'center'
     },
-}))
+}));
+
+const debounce = (func, delay) => {
+    let timerId;
+    return function (...args) {
+        clearTimeout(timerId);
+        timerId = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+};
 
 const Header = () => {
     const classes = useStyles();
     const history = useHistory();
+    const storeData = useSelector(state => state);
+    const dispatch = useDispatch();
     const [profileAnchorEl, setProfileAnchorEl] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -51,10 +64,16 @@ const Header = () => {
     };
 
     const handleShowProfile = () => { };
-    const handleSearchChange = (event, newValue) => {
-        setSearchQuery(newValue);
-        setSearchSuggestions(['Apple', 'Banana', 'Orange']);
-    };
+
+    const handleSearchChange = debounce((val) => {
+        setSearchQuery(val);
+        dispatch({ type: 'SEARCH_PROJECT', payload: val });
+    }, 500);
+
+    useEffect(() => {
+        const names = storeData?.dashboardProjects.map(item => item.Name);
+        setSearchSuggestions(names);
+    }, []);
 
     return (
         <AppBar position="static">
@@ -80,7 +99,7 @@ const Header = () => {
                                             label="Search"
                                             variant="outlined"
                                             value={searchQuery}
-                                            onChange={(e) => handleSearchChange(e, e.target.value)}
+                                            onChange={(e) => handleSearchChange(e.target.value)}
                                         />
                                     )}
                                 />

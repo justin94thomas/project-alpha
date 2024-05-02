@@ -1,6 +1,7 @@
 import EntryPoint from './EntryPoint';
 import { SnackbarProvider } from 'notistack';
 import './App.css';
+import { connect } from 'react-redux';
 function App() {
   return (
     <div className="App">
@@ -11,4 +12,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  dashboardProjects: state.dashboardProjects,
+  showProjects: state.showProjects
+})
+export default connect(mapStateToProps)(App);

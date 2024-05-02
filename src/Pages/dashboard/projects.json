@@ -1,12 +1,12 @@
 {
     "Content": [
         {
-            "Name": "Marketplace",
+            "Name": "marketplace",
             "Routes": "/marketplace",
             "Image": "marketplaceLogo"
         },
         {
-            "Name": "Blockbuster",
+            "Name": "blockbuster",
             "Routes": "/blockbuster",
             "Image": "blockbusterLogo"
         }
