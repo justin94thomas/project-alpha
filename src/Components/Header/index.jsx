@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@mui/material/Autocomplete';
-import { icons } from '../../Setup/Content/assets';
+import { icons, images } from '../../Setup/Content/assets';
 import Routes from '../../Setup/routes-manager/routes.json';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -27,6 +27,15 @@ const useStyles = makeStyles((theme) => ({
         gap: '10px',
         alignItems: 'center'
     },
+    noCartImg: {
+        background: '#fff',
+        borderRadius: '50%',
+        width: 50
+    },
+    appBar: {
+        color: '#000',
+        backgroundColor: '#fff'
+    }
 }));
 
 const debounce = (func, delay) => {
@@ -47,7 +56,8 @@ const Header = () => {
     const [profileAnchorEl, setProfileAnchorEl] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
-    const { MenuIcon, AccountCircleIcon } = icons;
+    const { AccountCircleIcon, AlphaLogo } = icons;
+    const { } = images;
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -76,12 +86,13 @@ const Header = () => {
     }, []);
 
     return (
-        <AppBar position="static">
+        <AppBar position="static" className={classes.appBar}>
             <Toolbar>
                 <Grid container xs={12}>
                     <Grid item xs={10} className={classes.toolbarSection}>
                         <IconButton edge="start" color="inherit" aria-label="menu">
-                            <MenuIcon />
+                            {/* <AlphaLogo /> */}
+                            <img src={AlphaLogo} className={classes.noCartImg} onClick={() => history.push(Routes.dashboard)} />
                         </IconButton>
                         <Typography variant="h6" style={{ cursor: 'pointer' }} onClick={() => history.push(Routes.dashboard)}>
                             Project Alpha
