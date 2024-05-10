@@ -1,8 +1,7 @@
 import { createStore } from 'redux';
-import Projects from '../Pages/Dashboard/projects.json';
 
 const initialState = {
-    dashboardProjects: Projects.Content,
+    dashboardProjects: [],
     showProjects: []
 }
 
@@ -11,6 +10,8 @@ function lowerCaseString(string) {
 }
 function handleState(state = initialState, action) {
     switch (action.type) {
+        case 'PROJECT_DATA':
+            return { ...state, dashboardProjects: action.payload }
         case 'SEARCH_PROJECT':
             const searchTerm = action.payload.toLowerCase();
             const filteredProjects = state.dashboardProjects.filter(project =>
