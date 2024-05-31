@@ -34,11 +34,12 @@ const useStyles = makeStyles((theme) => ({
     },
     navBackground: {
         padding: '10px',
-        background: '#eee',
+        // border: '1px solid #eee',
+        width: '45px',
         borderRadius: '50%',
-        height: '41px',
+        height: '45px',
         lineHeight: '10px',
-        overflow: 'hidden'
+        // overflow: 'hidden'
     },
     addedToCart: {
         borderRadius: '50%',
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Header = () => {
     const classes = useStyles();
-    const { BookingsIcon } = icons;
+    const { TicketIcon } = icons;
     const { state, dispatch } = useBlockbusterContext();
     const [loading, setLoading] = useState(false);
 
@@ -118,7 +119,7 @@ const Header = () => {
             <Grid item lg={1} className={classes.profile}>
                 <Box className={classes.navBackground}>
                     <div style={{ display: 'flex', position: 'relative' }}>
-                        <BookingsIcon id="bookings-icon" size={20} style={{ cursor: 'pointer' }} onClick={handleMyBookings} />
+                        <TicketIcon id="bookings-icon" size={30} style={{ cursor: 'pointer', color: '#fff' }} onClick={handleMyBookings} />
                         {state?.bookedSeats?.length > 0 ? <span className={classes.addedToCart}>{state?.bookedSeats?.length}</span> : null}
                     </div>
                 </Box>
