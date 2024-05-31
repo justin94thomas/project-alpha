@@ -6,3 +6,17 @@ export const getDashboardProjects = async () => {
     const res = await axios.get(`${apiBaseURL}/${path}`);
     return res && res.data ? res.data : null;
 };
+
+
+export const getBlockbusterMovies = async () => {
+    const path = 'blockbuster/getMovies';
+    const res = await axios.get(`${apiBaseURL}/${path}`);
+    return res && res.data ? res.data : null;
+}
+
+export const getBlockbusterSeats = async () => {
+    const path = 'blockbuster/getSeats';
+    const res = await axios.get(`${apiBaseURL}/${path}`);
+    return res && res.data ? res.data : null;
+}
+

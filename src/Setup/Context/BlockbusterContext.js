@@ -4,7 +4,7 @@ import BlockbusterData from '../../Pages/Blockbuster/data.json';
 const BlockbusterContext = createContext();
 
 const initialState = {
-    movies: BlockbusterData.Movies,
+    movies: [],
     selectedMovie: null,
     selectedTheater: null,
     selectedTiming: null,
@@ -17,11 +17,15 @@ const initialState = {
         bookTickets: false,
         watchOnline: false
     },
-    seats: BlockbusterData.Seats
+    seats: []
 }
 
 const reducer = (state, action) => {
     switch (action.type) {
+        case 'UPDATE_MOVIES':
+            return { ...state, movies: action.payload };
+        case 'UPDATE_SEATS':
+            return { ...state, seats: action.payload };
         case 'UPDATE_CURRENT_SCREEN':
             return { ...state, openScreen: action.payload };
         case 'UPDATE_SELECTED_SEAT':

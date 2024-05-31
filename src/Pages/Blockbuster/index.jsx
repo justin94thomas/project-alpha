@@ -9,6 +9,10 @@ import BookTickets from './Components/Book-Tickets';
 import { images, icons } from '../../Setup/Content/assets';
 import './blockbuster.css';
 import BookedTickets from './Components/Bookings';
+import { getBlockbusterMovies, getBlockbusterSeats } from '../../Utils/APIstore';
+import MovieData from './data.json';
+import Loader from '../../Components/Loader';
+
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
@@ -54,6 +58,7 @@ const Header = () => {
     const classes = useStyles();
     const { BookingsIcon } = icons;
     const { state, dispatch } = useBlockbusterContext();
+    const [loading, setLoading] = useState(false);
 
     const handleNavigateDashboard = () => {
         const updatedOpenScreen = Object.fromEntries(
@@ -69,8 +74,44 @@ const Header = () => {
         dispatch({ type: 'UPDATE_CURRENT_SCREEN', payload: { ...updatedOpenScreen, bookings: true } });
     };
 
+
+    useEffect(() => {
+        let isMounted = true;
+        setLoading(true);
+        Promise.all([getBlockbusterMovies(), getBlockbusterSeats()])
+            .then(([moviesResponse, seatsResponse]) => {
+                if (isMounted) {
+                    if (moviesResponse.success) {
+                        dispatch({ type: 'UPDATE_MOVIES', payload: moviesResponse.data });
+                    } else {
+                        dispatch({ type: 'UPDATE_MOVIES', payload: MovieData?.Movies });
+                    }
+                    if (seatsResponse.success) {
+                        dispatch({ type: 'UPDATE_SEATS', payload: seatsResponse.data });
+                    } else {
+                        dispatch({ type: 'UPDATE_SEATS', payload: MovieData?.Seats });
+                    }
+                    setLoading(false);
+                }
+            })
+            .catch(error => {
+                if (isMounted) {
+                    setLoading(false);
+                    dispatch({ type: 'UPDATE_MOVIES', payload: MovieData?.Movies });
+                    dispatch({ type: 'UPDATE_SEATS', payload: MovieData?.Seats });
+                    console.log(error);
+                }
+            });
+        return () => {
+            isMounted = false;
+        };
+    }, []);
+
+
+
     return (
         <Grid container>
+            {loading && <Loader />}
             <Grid item lg={11}>
                 <img src={images.blockbusterLogo} className={classes.blockbusterLogo} onClick={() => handleNavigateDashboard()} alt="Blockbuster Logo" />
             </Grid>
@@ -88,7 +129,7 @@ const Header = () => {
 
 const Blockbuster = () => {
     const { state, dispatch } = useBlockbusterContext();
-
+    const [loading, setLoading] = useState(false);
     const handleBookTickets = (movie) => {
         const updatedOpenScreen = Object.fromEntries(
             Object.entries(state.openScreen).map(([key, _]) => [key, false])
@@ -134,6 +175,7 @@ const Blockbuster = () => {
 
 const BlockbusterMain = () => {
     const classes = useStyles();
+    const [loading, setLoading] = useState(false);
 
     return (
         <div className="blockbuster-main">
