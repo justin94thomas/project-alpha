@@ -1,4 +1,5 @@
-import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Box, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 // import { useTranslation } from 'react-i18next';
 import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
@@ -9,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     header: {
         alignItems: 'center',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         height: '100%',
         borderBottom: '2px solid #D5EF82',
         margin: "30px 0px"

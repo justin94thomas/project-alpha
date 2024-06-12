@@ -3,5 +3,6 @@
 }
 
 .marketplace-navigation {
-    padding: '16px'
+    padding: 16px;
+    display: 'block'
 }

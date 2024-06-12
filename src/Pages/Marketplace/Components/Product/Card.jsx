@@ -1,4 +1,5 @@
-import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     itemDetails: {
         gap: '4px',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         height: '142px'
     },
     productName: {
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         width: 36,
         border: '1px solid',
-        lineHeight: '36px'
+        lineHeight: '36px !important'
     },
     quantitySelector: {
         display: 'flex',
@@ -76,7 +77,7 @@ const ProductCard = ({ productData }) => {
     }
 
     return (<>
-        <Grid container xs={12} margin={20}>
+        <Grid container xs={12} margin={0}>
             {productData && productData.length > 0 ?
                 <>
                     {productData.map((item, index) => {

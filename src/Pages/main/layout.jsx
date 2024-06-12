@@ -1,6 +1,7 @@
 // Layout.js
-import { Box, Grid, makeStyles, useMediaQuery } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Box, Grid, useMediaQuery } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { useTheme } from '@mui/material/styles';
 import React, { Suspense, useState } from "react";
 import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Switch } from 'react-router-dom';
@@ -23,13 +24,13 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     }
-}))
+}));
 
 function Layout() {
     const classes = useStyles();

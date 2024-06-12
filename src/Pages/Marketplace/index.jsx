@@ -1,5 +1,5 @@
-import { Box, Grid, Tab, Tabs, makeStyles, withStyles } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
+import { Box, Grid, Tab, Tabs } from '@mui/material';
+import { makeStyles, withStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import { CiSearch } from "react-icons/ci";
 import { FaUserCircle } from "react-icons/fa";
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         width: 16,
         border: '1px solid',
         lineHeight: '15px',
-        background: 'red',
+        background: 'red !important',
         color: '#fff',
         position: 'absolute',
         top: '-11px',
@@ -65,11 +65,11 @@ const useStyles = makeStyles((theme) => ({
     tabButton: {
         border: '1px solid #eee',
         borderRadius: '30px',
-        background: '#eee'
+        background: '#eee !important'
     },
     navBackground: {
         padding: '10px',
-        background: '#eee',
+        background: '#eee !important',
         borderRadius: '50%',
         height: '41px',
         lineHeight: '10px',
@@ -80,11 +80,11 @@ const StyledTabs = withStyles({
     indicator: {
         display: 'flex',
         justifyContent: 'center',
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent !important',
         '& > span': {
             maxWidth: 50,
             width: '100%',
-            backgroundColor: '#635ee7',
+            backgroundColor: '#635ee7 !important',
         },
     },
 })((props) => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />);
@@ -105,7 +105,6 @@ const StyledTab = withStyles((theme) => ({
 
 const Header = (props) => {
     const { handleShowCart } = props;
-    const theme = useTheme();
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const { state, dispatch } = useMarketplaceContext();
@@ -117,10 +116,9 @@ const Header = (props) => {
 
     return (
         <div className={classes.marketplaceHeader}>
-
             <Grid container xs={12}>
                 <Grid item xs={6} className={classes.marketplaceHead}>
-                    <StyledTabs value={value} onChange={handleChange} aria-label="styled tabs example">
+                    <StyledTabs value={value} onChange={handleChange}>
                         <StyledTab className={classes.tabButton} label="Exclusive" />
                         <StyledTab className={classes.tabButton} label="Accessories" />
                         <StyledTab className={classes.tabButton} label="New Arriavals" />

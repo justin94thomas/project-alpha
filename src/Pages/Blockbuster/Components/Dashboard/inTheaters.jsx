@@ -1,5 +1,6 @@
-import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Box, Grid, Typography } from '@mui/material';
 import React from 'react';
+import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'react-i18next';
 import { icons } from '../../../../Setup/Content/assets';
 
@@ -15,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     upcomingMovies: {
@@ -35,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
         display: 'block',
         color: '#fff',
         fontSize: 12,
-        background: '#000',
+        background: '#000 !important',
         width: '100%'
     },
     movieRatings: {
         display: 'block',
         color: '#fff',
-        background: '#000',
+        background: '#000 !important',
         width: '100%'
     },
     movieImg: {
@@ -55,10 +56,10 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     itemDetails: {

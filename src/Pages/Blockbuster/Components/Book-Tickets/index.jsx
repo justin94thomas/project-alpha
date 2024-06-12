@@ -1,4 +1,5 @@
-import { Button, Dialog, DialogActions, DialogContent, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { icons } from '../../../../Setup/Content/assets';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
@@ -20,12 +21,12 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '50%',
         '&:hover': {
             color: '#fff',
-            background: '#f84464',
+            background: '#f84464 !important',
         }
     },
     activeSeat: {
         color: '#fff',
-        background: '#f84464',
+        background: '#f84464 !important',
         width: 30,
         height: 30,
         display: 'flex',
@@ -65,16 +66,16 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 5
     },
     theaterBox: {
-        background: '#fff',
+        background: '#fff !important',
         height: '92%',
         margin: 20,
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     theaterMain: {

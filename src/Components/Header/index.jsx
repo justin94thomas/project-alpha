@@ -8,10 +8,10 @@ import {
     TextField,
     Toolbar,
     Typography,
-    makeStyles,
-    useMediaQuery,
-    useTheme
-} from '@material-ui/core';
+    useMediaQuery
+} from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import { useTheme } from '@mui/material/styles'; // Correct hook for theme
 import Autocomplete from '@mui/material/Autocomplete';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,13 +26,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center'
     },
     noCartImg: {
-        background: '#fff',
+        background: '#fff !important',
         borderRadius: '50%',
         width: 50
     },
     appBar: {
-        color: '#000',
-        backgroundColor: '#fff'
+        color: '#000 !important',
+        backgroundColor: '#fff !important'
     }
 }));
 
@@ -67,7 +67,6 @@ const Header = () => {
         setProfileAnchorEl(null);
     };
 
-
     const handleShowProfile = () => { };
 
     const handleSearchChange = debounce((val) => {
@@ -78,7 +77,7 @@ const Header = () => {
     useEffect(() => {
         const names = storeData?.dashboardProjects.map(item => item.Name);
         setSearchSuggestions(names);
-    }, []);
+    }, [storeData]);
 
     return (
         <AppBar position="static" className={classes.appBar}>
@@ -86,8 +85,7 @@ const Header = () => {
                 <Grid container xs={12}>
                     <Grid item xs={10} className={classes.toolbarSection}>
                         <IconButton edge="start" color="inherit" aria-label="menu">
-                            {/* <AlphaLogo /> */}
-                            <img src={AlphaLogo} className={classes.noCartImg} onClick={() => history.push(Routes.dashboard)} />
+                            <img src={AlphaLogo} className={classes.noCartImg} onClick={() => history.push(Routes.dashboard)} alt="logo" />
                         </IconButton>
                         <Typography variant="h6" style={{ cursor: 'pointer' }} onClick={() => history.push(Routes.dashboard)}>
                             Project Alpha
@@ -100,7 +98,7 @@ const Header = () => {
                                     options={searchSuggestions}
                                     renderInput={(params) => (
                                         <TextField
-                                            style={{ background: '#fff', borderRadius: '8px', margin: 10 }}
+                                            style={{ background: '#fff !important', borderRadius: '8px', margin: 10 }}
                                             {...params}
                                             label="Search"
                                             variant="outlined"
@@ -123,7 +121,6 @@ const Header = () => {
                         >
                             <AccountCircleIcon />
                         </IconButton>
-                        {/* Profile Menu */}
                         <Menu
                             id="profile-menu"
                             anchorEl={profileAnchorEl}

@@ -1,4 +1,5 @@
-import { Grid, Typography, makeStyles } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { images } from '../../../../Setup/Content/assets';
@@ -7,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     textBox: {
         display: 'flex',
         justifyContent: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column !important'
     },
     text1: {
         textTransform: 'uppercase',

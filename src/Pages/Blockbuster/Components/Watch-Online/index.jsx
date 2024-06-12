@@ -1,4 +1,5 @@
-import { Grid, Typography, makeStyles } from '@material-ui/core';
+import { Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { icons } from '../../../../Setup/Content/assets';
@@ -9,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     movieDetails1: {
         justifyContent: 'center',
         zIndex: 1,
-        background: 'rgba(0, 0, 0)',
+        background: 'rgba(0, 0, 0) !important',
         position: 'relative'
     },
     video: {

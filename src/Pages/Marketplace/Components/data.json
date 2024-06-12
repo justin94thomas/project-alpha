@@ -3,13 +3,13 @@
         {
             "id": 1,
             "name": "Sneakers",
-            "image": "https://static.glami.cz/img/329726041.png",
+            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/sneak-1.png",
             "alt": "image1"
         },
         {
             "id": 2,
             "name": "Clothing",
-            "image": "https://i1.t4s.cz/products/1md30120553/on-running-challenger-jacket-682239-1md30120553.png",
+            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cloth-1.png",
             "alt": "image2"
         }
     ],
@@ -18,8 +18,8 @@
             "id": "shoe-1",
             "name": "Air Jordan I High G",
             "image": [
-                "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/211d4d31-22dc-4792-aafd-70a6d32a4fdf/air-jordan-i-high-g-golf-shoes-qKzTBg.png",
-                "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/41fdbae1-2e65-456a-9388-fa08733c5eeb/air-jordan-i-high-g-golf-shoes-qKzTBg.png"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordan1.jpeg",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordan2.jpeg"
             ],
             "price": 16995,
             "original": 20000,
@@ -32,8 +32,8 @@
             "id": "shoe-2",
             "name": "Terminator High",
             "image": [
-                "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/5ed772c6-363b-44c8-82ec-21ce3c4f6425/terminator-high-black-and-light-pumice-fj4198-001-release-date.jpg",
-                "https://static.nike.com/a/images/t_prod_sc/w_960,c_limit,f_auto/2be561ff-6cf5-44cc-89f5-ef3f7f02416a/terminator-high-black-and-light-pumice-fj4198-001-release-date.jpg"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/term1.jpg",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/term2.jpg"
             ],
             "price": 12795,
             "original": 15000,
@@ -46,8 +46,8 @@
             "id": "shoe-3",
             "name": "Air Jordan 6",
             "image": [
-                "https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/fe07659f-2268-4d04-8acb-e9dd8054a97a/air-jordan-6-aqua-ct8529-004-release-date.jpg",
-                "https://static.nike.com/a/images/t_prod_sc/w_960,c_limit,f_auto/ff4d8989-b89a-4c34-8dda-3773092bd843/air-jordan-6-aqua-ct8529-004-release-date.jpg"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordan3.jpg",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordan4.jpg"
             ],
             "price": 18395,
             "brand": "Nike",
@@ -59,8 +59,8 @@
             "id": "shoe-4",
             "name": "Kobe 4 Protro",
             "image": [
-                "https://static.nike.com/a/images/t_prod_ss/w_640,c_limit,f_auto/35b998bf-b75e-452a-91bc-97b9b685277b/kobe-4-protro-mambacita-fj9363-100-release-date.jpg",
-                "https://static.nike.com/a/images/t_prod_sc/w_640,c_limit,f_auto/bee22b57-b43e-41cd-a7d7-291c96caa75b/kobe-4-protro-mambacita-fj9363-100-release-date.jpg"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kobe1.jpg",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kobe2.jpg"
             ],
             "price": 16995,
             "brand": "Nike",
@@ -76,8 +76,8 @@
             "id": "cloth-1",
             "name": "Jordan x Awake NY - Men's Varsity Jacket",
             "image": [
-                "https://static.nike.com/a/images/w_640,c_limit/eae27a16-826a-4db7-a540-750319a671cf/jordan-x-awake-ny-apparel-collection-release-date.png",
-                "https://static.nike.com/a/images/w_640,c_limit/6d3681f0-2852-4aae-8645-6fce718fd7cd/jordan-x-awake-ny-apparel-collection-release-date.png"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordanx.png",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/jordanx2.png"
             ],
             "price": 60995,
             "original": 63000,
@@ -91,8 +91,8 @@
             "id": "cloth-2",
             "name": "JNOCTA 8K Peaks - DLMTS 8000 Jacket",
             "image": [
-                "https://static.nike.com/a/images/w_640,c_limit/adfe366d-d18e-4744-932d-fd771a317721/nocta-8k-peaks-apparel-collection-release-date.png",
-                "https://static.nike.com/a/images/w_640,c_limit/a1de3367-7cf5-4d73-97cf-20b8ec994787/nocta-8k-peaks-apparel-collection-release-date.png"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/nocta1.png",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/nocta2.png"
             ],
             "price": 22995,
             "original": 26000,
@@ -106,8 +106,8 @@
             "id": "cloth-3",
             "name": "Nike x Jacquemus - T-Shirt",
             "image": [
-                "https://static.nike.com/a/images/w_640,c_limit/dd3076c2-db36-4be6-93a8-bae3d87e6cb9/nike-x-jacquemus-tops-collection-release-date.png",
-                "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto/w_640,c_limit/b1c58ecc-282d-435c-a77f-2892d6ab4a2e/nike-x-jacquemus-tops-collection-release-date.jpg"
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/nike-x-jacquemus1.png",
+                "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/nike-x-jacquemus2.jpg"
             ],
             "price": 3995,
             "brand": "Nike",

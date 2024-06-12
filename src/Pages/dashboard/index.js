@@ -1,4 +1,5 @@
-import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Box, Grid, Typography } from "@mui/material";
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
@@ -16,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         border: "1px solid #f4f4f4",
         borderRadius: 8,
         minHeight: "30px",
-        background: "#f4f4f4",
+        background: "#f4f4f4 !important",
         cursor: "pointer",
     },
 }));

@@ -1,4 +1,5 @@
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 import '../../blockbuster.css';
@@ -17,10 +18,10 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     upcomingMovies: {
@@ -28,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     }
 }))

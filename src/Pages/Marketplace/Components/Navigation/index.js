@@ -1,5 +1,6 @@
 
-import { Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { useHistory } from "react-router-dom";
 import '../../marketplace.css';
@@ -12,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer'
     },
     navButtonActive: {
-        background: '#2763FF',
-        color: '#fff',
+        background: '#2763FF !important',
+        color: '#fff !important',
         width: '100%',
         borderRadius: '30px',
         fontSize: '13px',
@@ -21,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'capitalize',
         justifyContent: 'left',
         '&:hover': {
-            background: '#2763FF',
-            color: '#fff',
+            background: '#2763FF !important',
+            color: '#fff !important',
         }
     },
     navButton: {
-        background: '#fff',
-        color: '#000',
+        background: '#fff !important',
+        color: '#000 !important',
         width: '100%',
         borderRadius: '30px',
         fontSize: '13px',
@@ -35,15 +36,15 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'capitalize',
         justifyContent: 'left',
         '&:hover': {
-            background: '#2763FF',
-            color: '#fff',
+            background: '#2763FF !important',
+            color: '#fff !important',
         }
     },
     navigationBox: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         gap: '8px',
-        marginTop: 70,
+        marginTop: '32px !important',
 
 
     }

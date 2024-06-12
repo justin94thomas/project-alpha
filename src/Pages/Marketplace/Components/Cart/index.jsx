@@ -1,4 +1,5 @@
-import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import { FaTrashCan } from "react-icons/fa6";
 import { images } from '../../../../Setup/Content/assets';
@@ -31,17 +32,17 @@ const useStyles = makeStyles((theme) => ({
     },
     cartCard: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         gap: '12px',
         marginTop: '12px',
         overflowY: 'auto',
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     cartItem: {
@@ -49,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '8px',
         textAlign: 'left',
         display: 'flex',
-        gap: '10px',
-        flexDirection: 'column'
+        gap: '10px !important',
+        flexDirection: 'column !important'
     },
     productDetail: {
         display: 'flex',
@@ -60,14 +61,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column !important'
     },
     checkoutMain: {
         textAlign: 'left',
-        marginTop: '16px'
+        marginTop: '16px !important'
     },
     discountBtn: {
-        background: 'rgb(0, 0, 0)',
+        background: 'rgb(0, 0, 0) !important',
         color: ' rgb(255, 255, 255)',
         padding: '6px',
         marginLeft: '15px',
@@ -86,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
     },
     checkoutBtn: {
-        background: '#E9C27D',
+        background: '#E9C27D !important',
         color: '#000',
         fontWeight: 600,
         fontSize: 14,
@@ -106,8 +107,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600
     },
     noCartImg: {
-        width: '500px',
+        width: '350px',
         alignSelf: 'center'
+    },
+    discountBox: {
+        display: 'flex',
+        placeContent: 'space-between !important'
     }
 }))
 
@@ -203,14 +208,16 @@ const MarketplaceCart = () => {
                 <Grid item xs={3} className={classes.checkoutMain}>
                     <Grid item xs={12}>
                         <Typography className={classes.checkoutItems}>Enter Discount Code</Typography>
-                        <input name="Quantity" type='text' placeholder="Discount Code" style={{ width: 120 }} />
-                        <Button className={classes.discountBtn}>Submit</Button>
+                        <div className={classes.discountBox}>
+                            <input name="Quantity" type='text' placeholder="Discount Code" style={{ width: 120 }} />
+                            <Button className={classes.discountBtn}>Submit</Button>
+                        </div>
                     </Grid>
                     <Grid item xs={12} style={{ marginTop: '15px' }}>
                         <Typography style={{ fontSize: "16px", fontWeight: 600 }}>Promotions</Typography>
                         <div className={classes.promotionCard}>
                             <Typography className={classes.checkoutItems}>Fee Shipping on order above Rs. 1000</Typography>
-                            <Typography className={classes.checkoutItems} style={{ color: 'green', width: 52 }}>-Rs. 50</Typography>
+                            <Typography className={classes.checkoutItems} style={{ color: 'green', width: 70 }}>-Rs. 50</Typography>
                         </div>
                         <div className={classes.promotionCard2} style={{ paddingTop: 10 }}>
                             <Typography className={classes.checkoutItems}>Sub Total</Typography>

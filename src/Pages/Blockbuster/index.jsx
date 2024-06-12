@@ -1,4 +1,5 @@
-import { Box, Grid, makeStyles } from '@material-ui/core';
+import { Box, Grid } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from 'react';
 import Loader from '../../Components/Loader';
 import { icons, images } from '../../Setup/Content/assets';
@@ -15,7 +16,7 @@ import MovieData from './data.json';
 
 const useStyles = makeStyles((theme) => ({
     mainHeader: {
-        background: '#000',
+        background: '#000 !important',
         borderBottom: '5px solid #FFD700',
         maxHeight: '10%'
     },
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
         width: 16,
         border: '1px solid',
         lineHeight: '15px',
-        background: 'red',
+        background: 'red !important',
         color: '#fff',
         position: 'absolute',
         top: '-11px',

@@ -1,4 +1,5 @@
-import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Box, Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React from 'react';
 import { images } from '../../../../Setup/Content/assets';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
@@ -6,17 +7,17 @@ import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterCont
 const useStyles = makeStyles((theme) => ({
     cartCard: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         gap: '12px',
         marginTop: '12px',
         overflowY: 'auto',
         '&::-webkit-scrollbar': {
             width: '5px',
             height: '8px',
-            backgroundColor: '#aaa',
+            backgroundColor: '#aaa !important',
         },
         '&::-webkit-scrollbar-thumb': {
-            background: '#000'
+            background: '#000 !important'
         }
     },
     cartItem: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'left',
         display: 'flex',
         gap: '10px',
-        flexDirection: 'column'
+        flexDirection: 'column !important'
     },
     productDetail: {
         display: 'flex',
@@ -36,14 +37,14 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column !important'
     },
     myCartText: {
         fontWeight: 600,
         fontSize: '20px'
     },
     noCartImg: {
-        width: '500px',
+        width: '350px',
         alignSelf: 'center'
     },
     buttonStyle: {

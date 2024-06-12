@@ -1,4 +1,5 @@
-import { Button, Dialog, DialogActions, DialogContent, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
 import { icons, images } from '../../../../Setup/Content/assets';
@@ -7,7 +8,7 @@ import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterCont
 const useStyles = makeStyles((theme) => ({
     seatMain: {
         marginTop: 5,
-        background: '#000',
+        background: '#000 !important',
         height: '75vh',
         display: 'table',
         textAlign: '-webkit-center',
@@ -50,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     movieScreen: {
         width: '300px',
         height: '10px',
-        background: '#fff'
+        background: '#fff !important'
     },
     speakerICO: {
         color: '#fff',

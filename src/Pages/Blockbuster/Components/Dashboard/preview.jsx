@@ -1,4 +1,5 @@
-import { Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import { Button, Grid, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import React, { useState } from 'react';
 import { icons } from '../../../../Setup/Content/assets';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 30,
         height: '60vh',
         overflow: 'hidden',
-        background: 'rgb(26, 26, 26)',
+        background: 'rgb(26, 26, 26) !important',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'right center',
         position: 'relative',
@@ -29,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         paddingLeft: 40,
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         justifyContent: 'space-between'
     },
     movieTitle: {
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     movieSynopsis: {
         width: '60%',
         padding: '4px 10px',
-        background: 'rgb(229, 229, 229)',
+        background: 'rgb(229, 229, 229) !important',
         marginTop: '40px',
         textAlign: '-webkit-left',
         borderRadius: '8px'
@@ -87,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
     castMain: {
         display: 'flex',
         gap: '3px', /* This is the default gap between items */
-        flexDirection: 'column',
+        flexDirection: 'column !important',
         placeItems: 'center',
         marginBottom: '20px',
         width: 170
