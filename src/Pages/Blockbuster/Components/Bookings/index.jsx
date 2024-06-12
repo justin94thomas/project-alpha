@@ -1,7 +1,7 @@
+import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
-import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 import { images } from '../../../../Setup/Content/assets';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     cartCard: {
@@ -75,7 +75,7 @@ const BookedTickets = () => {
                             <Grid item xs={8}>
                                 <Grid container xs={12} style={{ display: 'flex', alignItems: 'center' }}>
                                     <Grid item xs={3} className={classes.productDetail}>
-                                        <img style={{ height: '150px', padding: '10px 0px 10px 10px' }} src={cartItem?.image} />
+                                        <img style={{ height: '150px', padding: '10px 0px 10px 10px' }} alt={"cart-img"} src={cartItem?.image} />
                                     </Grid>
                                     <Grid item xs={9} style={{ padding: '5px 12px' }}>
                                         <Typography varient='p' style={{ fontWeight: 600, fontSize: '18px' }}>{cartItem?.movie}</Typography>
@@ -94,7 +94,7 @@ const BookedTickets = () => {
                         </Grid>
                     </Box>
                 }) : <>
-                    <img src={images.emptyCart} className={classes.noCartImg} />
+                    <img src={images.emptyCart} alt={"empty-cart"} className={classes.noCartImg} />
                     <Typography>No Bookings Found</Typography>
                 </>
                 }

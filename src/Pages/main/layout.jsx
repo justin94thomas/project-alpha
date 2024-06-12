@@ -1,13 +1,13 @@
 // Layout.js
-import React, { lazy, Suspense, useState } from "react";
+import { Box, Grid, makeStyles, useMediaQuery } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
-import { Link, Route, Switch } from 'react-router-dom';
-import Routes from '../../Setup/routes-manager/routes.json';
-import { Grid, Box, makeStyles, useMediaQuery } from '@material-ui/core';
+import React, { Suspense, useState } from "react";
 import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorFallback } from '../../Utils/ErrorBoundary';
+import { Route, Switch } from 'react-router-dom';
 import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
+import Routes from '../../Setup/routes-manager/routes.json';
+import { ErrorFallback } from '../../Utils/ErrorBoundary';
 const Dashboard = React.lazy(() => import('../Dashboard'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
 const Blockbuster = React.lazy(() => import('../Blockbuster'));

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab, Button } from '@material-ui/core';
+import { Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
+import { icons } from '../../../../Setup/Content/assets';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 import '../../blockbuster.css';
-import { images, icons } from '../../../../Setup/Content/assets';
-import { BlockbusterProvider, useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     mainBody: {
@@ -107,7 +107,7 @@ const BlockbusterPreview = ({ watchOnline, handleBookTickets }) => {
             <Grid container xs={12} className={classes.movieDetails1}
                 style={{ backgroundImage: `linear-gradient(90deg, rgb(26, 26, 26) 24.97%, rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%), url(${selectedMovie.cover}` }}>
                 <Grid item xs={4} className={classes.movieImage}>
-                    <img src={selectedMovie.image} className={classes.image} />
+                    <img src={selectedMovie.image} alt={'selected-movie'} className={classes.image} />
                 </Grid>
                 <Grid item xs={8} className={classes.movieDetails}>
                     <Typography varient='h1' className={classes.movieTitle}>{selectedMovie.title}</Typography>

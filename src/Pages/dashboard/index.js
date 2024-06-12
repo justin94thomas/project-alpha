@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
-import { useHistory, Link } from "react-router-dom";
+import { Box, Grid, Typography, makeStyles } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from "react-router-dom";
+import Loader from '../../Components/Loader';
 import { images } from "../../Setup/Content/assets";
-import { useSelector, useDispatch } from 'react-redux';
 import { getDashboardProjects } from '../../Utils/APIstore';
 import Projects from './projects.json';
-import Loader from '../../Components/Loader';
 
 const useStyles = makeStyles((theme) => ({
     main: {
@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
     const classes = useStyles();
-    const history = useHistory();
     const dispatch = useDispatch();
     const storeData = useSelector(state => state);
     const [dashboardContent, setDashboardContent] = useState([]);
@@ -68,7 +67,7 @@ export default function Dashboard() {
                     <Grid item xs={6} sm={4} lg={2} key={item.Name}>
                         <Link to={item.Routes} style={{ textDecoration: 'none' }}>
                             <div className={classes.content}>
-                                <img src={images[item.Image]} style={{ width: '100%' }} />
+                                <img src={images[item.Image]} alt={'dashboard-img'} style={{ width: '100%' }} />
                                 <Typography variant="p">{capitalizeFirstLetter(item.Name)}</Typography>
                             </div>
                         </Link>

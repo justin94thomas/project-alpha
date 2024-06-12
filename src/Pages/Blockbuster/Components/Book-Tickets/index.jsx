@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, Grid, Typography, makeStyles } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { icons } from '../../../../Setup/Content/assets';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
-import { images, icons } from '../../../../Setup/Content/assets';
 import SeatSelector from './seatSelector';
 
 const useStyles = makeStyles((theme) => ({

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
-import { images, icons } from '../../../../Setup/Content/assets';
+import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { icons } from '../../../../Setup/Content/assets';
 
 const useStyles = makeStyles((theme) => ({
     recommendText: {

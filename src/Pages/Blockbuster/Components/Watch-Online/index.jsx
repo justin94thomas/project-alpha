@@ -1,7 +1,7 @@
+import { Grid, Typography, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { Grid, IconButton, makeStyles, Dialog, DialogContent, Typography } from '@material-ui/core';
 import ReactPlayer from 'react-player';
-import { images, icons } from '../../../../Setup/Content/assets';
+import { icons } from '../../../../Setup/Content/assets';
 import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 const WatchOnline = ({ closePreview }) => {
     const classes = useStyles();
-    const { Sidebar, Close } = icons;
+    const { Close } = icons;
     const { state, dispatch } = useBlockbusterContext();
     const [url, setUrl] = useState('');
 

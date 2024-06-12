@@ -1,7 +1,7 @@
+import { Grid, Typography, makeStyles } from '@material-ui/core';
 import React from 'react';
-import { images } from '../../../../Setup/Content/assets';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import { images } from '../../../../Setup/Content/assets';
 
 const useStyles = makeStyles((theme) => ({
     textBox: {

@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from 'react';
 import {
     AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    Button,
+    Box,
     Grid,
+    IconButton,
     Menu,
     MenuItem,
-    Popover,
     TextField,
-    Box,
+    Toolbar,
+    Typography,
+    makeStyles,
     useMediaQuery,
-    useTheme,
-    makeStyles
+    useTheme
 } from '@material-ui/core';
-import { useHistory } from "react-router-dom";
 import Autocomplete from '@mui/material/Autocomplete';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { icons, images } from '../../Setup/Content/assets';
 import Routes from '../../Setup/routes-manager/routes.json';
-import { useSelector, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     toolbarSection: {
@@ -69,9 +67,6 @@ const Header = () => {
         setProfileAnchorEl(null);
     };
 
-    const handleSignOut = () => {
-        handleProfileClose();
-    };
 
     const handleShowProfile = () => { };
 
@@ -137,7 +132,6 @@ const Header = () => {
                             onClose={handleProfileClose}
                         >
                             <MenuItem onClick={handleShowProfile}>Profile</MenuItem>
-                            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
                         </Menu>
                     </Grid>
                 </Grid>

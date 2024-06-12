@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
+import { Box, Grid, Tab, Tabs, makeStyles, withStyles } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
+import React, { useState } from 'react';
 import { CiSearch } from "react-icons/ci";
-import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
-import './marketplace.css';
-import MarketplaceDashboard from './Components/Dashboard';
-import ProductList from './Components/Product';
-import MarketplaceCart from './Components/Cart';
-import { MarketplaceProvider, useMarketplaceContext } from '../../Setup/Context/MarketplaceContext';
-import MarketplaceNavigation from './Components/Navigation';
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { icons } from '../../Setup/Content/assets';
+import { MarketplaceProvider, useMarketplaceContext } from '../../Setup/Context/MarketplaceContext';
 import Routes from '../../Setup/routes-manager/routes.json';
 import Page404 from './Components/404';
+import MarketplaceCart from './Components/Cart';
+import MarketplaceDashboard from './Components/Dashboard';
+import MarketplaceNavigation from './Components/Navigation';
+import ProductList from './Components/Product';
+import './marketplace.css';
 
 const useStyles = makeStyles((theme) => ({
     marketplaceHeader: {

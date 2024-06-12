@@ -1,9 +1,8 @@
+import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
 import { FaTrashCan } from "react-icons/fa6";
-import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
 import { images } from '../../../../Setup/Content/assets';
+import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
 const useStyles = makeStyles((theme) => ({
     myCartText: {
         fontWeight: 600,

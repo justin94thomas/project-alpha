@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
+import { Box, Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { useTranslation } from 'react-i18next';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
 

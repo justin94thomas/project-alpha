@@ -1,17 +1,16 @@
+import { Box, Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { Grid, Box, makeStyles } from '@material-ui/core';
-import { FaUserCircle } from "react-icons/fa";
+import Loader from '../../Components/Loader';
+import { icons, images } from '../../Setup/Content/assets';
 import { BlockbusterProvider, useBlockbusterContext } from '../../Setup/Context/BlockbusterContext';
+import { getBlockbusterMovies, getBlockbusterSeats } from '../../Utils/APIstore';
+import BookTickets from './Components/Book-Tickets';
+import BookedTickets from './Components/Bookings';
 import BlockbusterDashboard from './Components/Dashboard';
 import BlockbusterPreview from './Components/Dashboard/preview';
 import WatchOnline from './Components/Watch-Online';
-import BookTickets from './Components/Book-Tickets';
-import { images, icons } from '../../Setup/Content/assets';
 import './blockbuster.css';
-import BookedTickets from './Components/Bookings';
-import { getBlockbusterMovies, getBlockbusterSeats } from '../../Utils/APIstore';
 import MovieData from './data.json';
-import Loader from '../../Components/Loader';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -130,7 +129,6 @@ const Header = () => {
 
 const Blockbuster = () => {
     const { state, dispatch } = useBlockbusterContext();
-    const [loading, setLoading] = useState(false);
     const handleBookTickets = (movie) => {
         const updatedOpenScreen = Object.fromEntries(
             Object.entries(state.openScreen).map(([key, _]) => [key, false])
@@ -176,8 +174,6 @@ const Blockbuster = () => {
 
 const BlockbusterMain = () => {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
-
     return (
         <div className="blockbuster-main">
             <BlockbusterProvider>

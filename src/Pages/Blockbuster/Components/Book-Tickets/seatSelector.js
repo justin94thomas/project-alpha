@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Button, Dialog, DialogContent, DialogActions } from '@material-ui/core';
-import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
-import { images, icons } from '../../../../Setup/Content/assets';
+import { Button, Dialog, DialogActions, DialogContent, Grid, Typography, makeStyles } from '@material-ui/core';
 import { useSnackbar } from 'notistack';
+import React, { useState } from 'react';
+import { icons, images } from '../../../../Setup/Content/assets';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     seatMain: {
@@ -161,7 +161,7 @@ function SeatSelector({ ticketsConfirmed }) {
                     <Grid container style={{ marginTop: 40, textAlign: '-webkit-center' }}>
                         <Grid item lg={12}>
                             <Typography>Confirm Tickets</Typography>
-                            <img src={movieTicket} width={200} />
+                            <img src={movieTicket} alt={"movie-ticket"} width={200} />
                             <Typography>{selectedSeats.join(', ')}</Typography>
                         </Grid>
                     </Grid>

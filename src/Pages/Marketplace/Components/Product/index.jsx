@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, Checkbox } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
-import ProductCard from './Card';
-import { LuFilter } from "react-icons/lu";
+import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+// import { useTranslation } from 'react-i18next';
 import { useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
+import ProductCard from './Card';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,57 +38,57 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Filter = ({ selectedProduct, setFilterData }) => {
-    const classes = useStyles();
-    const { state } = useMarketplaceContext();
-    const [brands, setBrands] = useState([]);
-    const [selectedBrands, setSelectedBrands] = useState([]);
+// const Filter = ({ selectedProduct, setFilterData }) => {
+//     const classes = useStyles();
+//     const { state } = useMarketplaceContext();
+//     const [brands, setBrands] = useState([]);
+//     const [selectedBrands, setSelectedBrands] = useState([]);
 
-    useEffect(() => {
-        let productType = selectedProduct?.name;
-        if (state[productType]) {
-            const uniqueBrands = [...new Set(state[productType].map(product => product.brand))];
-            setBrands(uniqueBrands);
-        }
-    }, [selectedProduct]);
+//     useEffect(() => {
+//         let productType = selectedProduct?.name;
+//         if (state[productType]) {
+//             const uniqueBrands = [...new Set(state[productType].map(product => product.brand))];
+//             setBrands(uniqueBrands);
+//         }
+//     }, [selectedProduct]);
 
-    const updateProduct = (e, brand) => {
-        let productType = selectedProduct?.name;
-        if (e.target.checked) {
-            const updatedBrands = [...selectedBrands, brand];
-            setSelectedBrands(updatedBrands);
-            const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
-            setFilterData(filteredList);
-        } else {
-            const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
-            setSelectedBrands(updatedBrands);
-            const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
-            setFilterData(filteredList);
-        }
-    };
+//     const updateProduct = (e, brand) => {
+//         let productType = selectedProduct?.name;
+//         if (e.target.checked) {
+//             const updatedBrands = [...selectedBrands, brand];
+//             setSelectedBrands(updatedBrands);
+//             const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
+//             setFilterData(filteredList);
+//         } else {
+//             const updatedBrands = selectedBrands.filter(selectedBrand => selectedBrand !== brand);
+//             setSelectedBrands(updatedBrands);
+//             const filteredList = state[productType].filter(product => updatedBrands.includes(product.brand));
+//             setFilterData(filteredList);
+//         }
+//     };
 
-    return (
-        <Box style={{ borderRight: '1px solid #eee', height: '100%' }}>
-            <div style={{ borderBottom: '1px solid #eee', }}>
-                <Typography varient={'p'} className={classes.filterHead}>Filter <LuFilter style={{ marginLeft: '4px' }} size={12} /></Typography>
-            </div>
-            <div style={{ marginTop: '30px' }}>
-                <Typography varient={'p'} style={{ fontWeight: 600 }}>Brand</Typography>
-                <div style={{ textAlign: 'left', marginTop: '12px' }}>
-                    {brands && brands.map(prod =>
-                        <Typography varient={'p'}><Checkbox style={{ color: '#0242E8' }} onChange={(e) => updateProduct(e, prod)} /> {prod}</Typography>
-                    )}
-                </div>
-            </div>
-            {/* <div style={{ marginTop: '30px' }}>
-                <Typography varient={'p'} style={{ fontWeight: 600 }}>Price</Typography>
-            </div> */}
-        </Box>
-    )
-}
+//     return (
+//         <Box style={{ borderRight: '1px solid #eee', height: '100%' }}>
+//             <div style={{ borderBottom: '1px solid #eee', }}>
+//                 <Typography varient={'p'} className={classes.filterHead}>Filter <LuFilter style={{ marginLeft: '4px' }} size={12} /></Typography>
+//             </div>
+//             <div style={{ marginTop: '30px' }}>
+//                 <Typography varient={'p'} style={{ fontWeight: 600 }}>Brand</Typography>
+//                 <div style={{ textAlign: 'left', marginTop: '12px' }}>
+//                     {brands && brands.map(prod =>
+//                         <Typography varient={'p'}><Checkbox style={{ color: '#0242E8' }} onChange={(e) => updateProduct(e, prod)} /> {prod}</Typography>
+//                     )}
+//                 </div>
+//             </div>
+//             {/* <div style={{ marginTop: '30px' }}>
+//                 <Typography varient={'p'} style={{ fontWeight: 600 }}>Price</Typography>
+//             </div> */}
+//         </Box>
+//     )
+// }
 const ProductList = ({ selectedProduct }) => {
     const classes = useStyles();
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
     const { state } = useMarketplaceContext();
     const [productData, setProductData] = useState([]);
     const [filterData, setFilterData] = useState();

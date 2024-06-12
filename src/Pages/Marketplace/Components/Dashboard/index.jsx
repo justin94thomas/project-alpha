@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { Grid, Box, Typography, makeStyles } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { useTranslation } from 'react-i18next';
+import { Box, Grid, Typography, makeStyles } from '@material-ui/core';
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { useTranslation } from 'react-i18next';
+import { useHistory } from "react-router-dom";
 import MarketplaceData from '../data.json';
-import { useHistory, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     header: {

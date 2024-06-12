@@ -1,10 +1,8 @@
 
-import React, { useEffect, useState } from 'react';
-import { Grid, Box, Typography, makeStyles, Button } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-import { MarketplaceProvider, useMarketplaceContext } from '../../../../Setup/Context/MarketplaceContext';
+import { Button, Grid, Typography, makeStyles } from '@material-ui/core';
+import React from 'react';
+import { useHistory } from "react-router-dom";
 import '../../marketplace.css';
-import { useHistory, Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles, Tabs, Tab } from '@material-ui/core';
-import { images, icons } from '../../../../Setup/Content/assets';
+import { Grid, Typography, makeStyles } from '@material-ui/core';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { icons } from '../../../../Setup/Content/assets';
 
 const useStyles = makeStyles((theme) => ({
     recommendText: {
@@ -106,7 +106,7 @@ const MovieCardUpcomming = ({ movieData, handleSelectedMovie }) => {
                         {movieData.map((item, index) => {
                             return <div className={classes.movieBox} key={index} onClick={() => handleSelectedMovie(item)}>
                                 <div className={classes.cardImgBox}>
-                                    <img src={item.image} className={classes.movieImg} />
+                                    <img src={item.image} alt={"upcomming-movie"} className={classes.movieImg} />
                                 </div>
                                 <div style={{ overflow: 'hidden' }}>
                                     <Typography variant='p' className={classes.movieName}>

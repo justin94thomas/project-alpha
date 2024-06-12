@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography, makeStyles, withStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 import '../../blockbuster.css';
 import InTheaters from './inTheaters.jsx';
 import MovieCardUpcomming from './upcommingCard.jsx';
-import { useBlockbusterContext } from '../../../../Setup/Context/BlockbusterContext';
 
 const useStyles = makeStyles((theme) => ({
     mainBody: {

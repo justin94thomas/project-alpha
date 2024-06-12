@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import BlockbusterData from '../../Pages/Blockbuster/data.json';
 
 const BlockbusterContext = createContext();
 
