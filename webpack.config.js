@@ -8,7 +8,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
     },
-    mode: 'development',
+    mode: 'production',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
