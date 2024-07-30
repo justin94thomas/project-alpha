@@ -1,28 +1,8 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { thunk } from 'redux-thunk';
+import rootReducer from './Reducers/rootReducer';
 
-const initialState = {
-    dashboardProjects: [],
-    showProjects: []
-}
-
-function lowerCaseString(string) {
-    return string.toLowerCase();
-}
-function handleState(state = initialState, action) {
-    switch (action.type) {
-        case 'PROJECT_DATA':
-            return { ...state, dashboardProjects: action.payload }
-        case 'SEARCH_PROJECT':
-            const searchTerm = action.payload.toLowerCase();
-            const filteredProjects = state.dashboardProjects.filter(project =>
-                lowerCaseString(project?.Name).includes(searchTerm)
-            );
-            return { ...state, showProjects: filteredProjects };
-        default:
-            return state;
-    }
-}
-
-const store = createStore(handleState);
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancer(applyMiddleware(thunk)));
 
 export default store;

@@ -2,7 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from '../../Components/Loader';
 import { images } from "../../Setup/Content/assets";
 import { getDashboardProjects } from '../../Utils/APIstore';
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
         minHeight: "30px",
         background: "#f4f4f4 !important",
         cursor: "pointer",
+        padding: 16,
     },
 }));
 
@@ -34,25 +35,26 @@ export default function Dashboard() {
             try {
                 setLoading(true);
                 const response = await getDashboardProjects();
+                debugger
                 if (response.success) {
                     dispatch({ type: 'PROJECT_DATA', payload: response.data });
                 } else {
-                    dispatch({ type: 'PROJECT_DATA', payload: Projects.Content });
+                    dispatch({ type: 'PROJECT_DATA', payload: Projects?.Content });
                 }
-                setLoading(false);
             } catch (error) {
-                setLoading(false);
                 dispatch({ type: 'PROJECT_DATA', payload: Projects.Content });
-                console.log(error)
+                console.log('Error fetching projects:', error);
+            } finally {
+                setLoading(false);
             }
-        })()
-    }, [])
+        })();
+    }, [dispatch]);
 
     useEffect(() => {
-        if (storeData.showProjects && storeData.showProjects.length > 0) {
-            setDashboardContent(storeData.showProjects)
+        if (storeData?.projects?.showProjects && storeData?.projects?.showProjects.length > 0) {
+            setDashboardContent(storeData?.projects?.showProjects);
         } else {
-            setDashboardContent(storeData.dashboardProjects)
+            setDashboardContent(storeData?.projects?.dashboardProjects);
         }
     }, [storeData]);
 
@@ -64,17 +66,24 @@ export default function Dashboard() {
         <Box style={{ margin: 16 }}>
             {loading && <Loader />}
             <Grid container spacing={2} className={classes.main}>
-                {dashboardContent.map((item) => (
-                    <Grid item xs={6} sm={4} lg={2} key={item.Name}>
-                        <Link to={item.Routes} style={{ textDecoration: 'none' }}>
-                            <div className={classes.content}>
-                                <img src={images[item.Image]} alt={'dashboard-img'} style={{ width: '100%' }} />
-                                <Typography variant="p">{capitalizeFirstLetter(item.Name)}</Typography>
-                            </div>
-                        </Link>
-
-                    </Grid>
-                ))}
+                {dashboardContent && dashboardContent.length > 0 ? (
+                    dashboardContent.map((item) => (
+                        <Grid item xs={6} sm={4} lg={2} key={item.Name}>
+                            <Link to={item.Routes} style={{ textDecoration: 'none' }}>
+                                <div className={classes.content}>
+                                    <img
+                                        src={images[item.Image]}
+                                        alt='dashboard-img'
+                                        style={{ width: '100%', height: 'auto' }}
+                                    />
+                                    <Typography variant="body1">{capitalizeFirstLetter(item.Name)}</Typography>
+                                </div>
+                            </Link>
+                        </Grid>
+                    ))
+                ) : (
+                    <Typography variant="body1">No content available</Typography>
+                )}
             </Grid>
         </Box>
     );

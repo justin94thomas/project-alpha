@@ -10,13 +10,14 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { MdEventSeat } from "react-icons/md";
 import { MdOutlineSpaceBar } from "react-icons/md";
 import { BsSpeakerFill } from "react-icons/bs";
+import AlphaVector from '../../Assets/SVGs/alpha-vector.svg';
 
 const images = {
-    marketplaceLogo: 'https://projectalpha9216.blob.core.windows.net/project-alpha/Images/marketplace-logo.jpg',
-    emptyCart: 'https://projectalpha9216.blob.core.windows.net/project-alpha/Images/empty-cart.jpg',
-    image404: 'https://projectalpha9216.blob.core.windows.net/project-alpha/Images/under-construction.jpg',
-    blockbusterLogo: 'https://projectalpha9216.blob.core.windows.net/project-alpha/Images/Blockbuster_logo.svg.png',
-    movieTicket: 'https://projectalpha9216.blob.core.windows.net/project-alpha/Images/movie-ticket.jpg'
+    marketplaceLogo: 'https://as2.ftcdn.net/v2/jpg/01/95/78/87/1000_F_195788717_Ba8397mYBadW3JUx5SQejAxpRN02DyEF.jpg',
+    emptyCart: 'https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png',
+    image404: 'https://static.vecteezy.com/system/resources/previews/016/462/237/original/website-under-construction-illustration-concept-on-white-background-vector.jpg',
+    blockbusterLogo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Blockbuster_logo.svg/1200px-Blockbuster_logo.svg.png',
+    movieTicket: 'https://media.istockphoto.com/id/1177049680/vector/movie-tickets-vector-cinema-ticket-design.jpg?s=612x612&w=0&k=20&c=6gZIUIPsNas6jCs-Vh3SeX7kTu6zGFUEVZDLdQHDvCc='
 }
 const icons = {
     MenuIcon: MenuIcon,
@@ -31,7 +32,7 @@ const icons = {
     Seat: MdEventSeat,
     MovieScreen: MdOutlineSpaceBar,
     Speaker: BsSpeakerFill,
-    AlphaLogo: 'https://projectalpha9216.blob.core.windows.net/project-alpha/SVGs/alpha-vector.svg',
+    AlphaLogo: AlphaVector,
     TicketIcon: IoTicketSharp
 }
 

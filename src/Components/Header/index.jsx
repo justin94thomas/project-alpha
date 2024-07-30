@@ -11,7 +11,7 @@ import {
     useMediaQuery
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles'; // Correct hook for theme
+import { useTheme } from '@mui/material/styles';
 import Autocomplete from '@mui/material/Autocomplete';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -75,7 +75,7 @@ const Header = () => {
     }, 500);
 
     useEffect(() => {
-        const names = storeData?.dashboardProjects.map(item => item.Name);
+        let names = storeData?.projects?.dashboardProjects && storeData?.projects?.dashboardProjects.map(item => item.Name);
         setSearchSuggestions(names);
     }, [storeData]);
 
@@ -84,8 +84,8 @@ const Header = () => {
             <Toolbar>
                 <Grid container xs={12}>
                     <Grid item xs={10} className={classes.toolbarSection}>
-                        <IconButton edge="start" color="inherit" aria-label="menu">
-                            <img src={AlphaLogo} className={classes.noCartImg} onClick={() => history.push(Routes.dashboard)} alt="logo" />
+                        <IconButton edge="start" color="inherit" aria-label="menu" onClick={() => history.push(Routes.dashboard)}>
+                            <img src={AlphaLogo} className={classes.noCartImg} alt="logo" />
                         </IconButton>
                         <Typography variant="h6" style={{ cursor: 'pointer' }} onClick={() => history.push(Routes.dashboard)}>
                             Project Alpha

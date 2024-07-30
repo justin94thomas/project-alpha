@@ -3,8 +3,8 @@
         {
             "id": "mov-001",
             "title": "Kung Fu Panda 4",
-            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kung-fu-img.jpg",
-            "cover": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kung-fu-cover.jpg",
+            "image": "https://m.media-amazon.com/images/M/MV5BZDY0YzI0OTctYjVhYy00MTVhLWE0NTgtYTRmYTBmOTE3YTViXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_FMjpg_UX1000_.jpg",
+            "cover": "https://sportshub.cbsistatic.com/i/2024/01/23/de248daa-91b2-4951-a70d-2c9af184bb72/kung-fu-panda-4-characters.jpg",
             "trailer": "https://youtu.be/_inKs4eeHiI",
             "genre": [
                 "Action",
@@ -53,8 +53,8 @@
         {
             "id": "mov-002",
             "title": "Godzilla x Kong: The New Empire",
-            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kong-img.jpg",
-            "cover": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/kong-cover.avif",
+            "image": "https://m.media-amazon.com/images/M/MV5BMWI2ZmE0MmYtM2ZmZS00OWY1LTg1YzctODczZGIzNDQwZDM2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg",
+            "cover": "https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/03/godzilla-vs-kong-monster-boat-fight-social-featured.jpeg",
             "trailer": "https://youtu.be/lV1OOlGwExM",
             "genre": [
                 "Action",
@@ -102,8 +102,8 @@
         {
             "id": "mov-003",
             "title": "Manjummel Boys",
-            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/boys-img.jpg",
-            "cover": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/boys-cover.jpg",
+            "image": "https://m.media-amazon.com/images/M/MV5BMTkxY2QxYTctOTRlMC00ZGQxLTlmMGItM2RhNmJkMTE4M2FlXkEyXkFqcGdeQXVyMjkxNzQ1NDI@._V1_.jpg",
+            "cover": "https://images.indianexpress.com/2024/03/Manjummel-Boys-enters-Rs-100-crore-club-Image_-Poster-of-Manjummel-Boys.jpg",
             "trailer": "https://youtu.be/id848Ww1YLo",
             "genre": [
                 "Drama",
@@ -151,8 +151,8 @@
         {
             "id": "mov-004",
             "title": "Dune: Part Two",
-            "image": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/dune-img.jpg",
-            "cover": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/dune-cover.webp",
+            "image": "https://diandrareviewsitall.com/wp-content/uploads/2024/02/MV5BODdjMjM3NGQtZDA5OC00NGE4LWIyZDQtZjYwOGZlMTM5ZTQ1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_FMjpg_UX1000_.jpg",
+            "cover": "https://sportshub.cbsistatic.com/i/2023/08/25/22e839f0-10e4-4518-aa35-ee676cd5d9c6/dune-part-two-empire-magazine-cover-header.jpg",
             "trailer": "https://youtu.be/Way9Dexny3w",
             "genre": [
                 "Action",
@@ -204,61 +204,61 @@
             "id": "1-seat",
             "value": 1,
             "active": true,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-1.avif"
+            "img": "https://img.freepik.com/free-vector/ride-bicycle-concept-illustration_114360-915.jpg?t=st=1711366213~exp=1711369813~hmac=7ae07fa42c954a707f9fabf7a88e1097e3d901d20653b7f55e8911bcb2ebcdbd&w=740"
         },
         {
             "id": "2-seats",
             "value": 2,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-2.jpg"
+            "img": "https://img.freepik.com/free-vector/delivery-service-concept-guy-scooter_23-2148500849.jpg?t=st=1711366159~exp=1711369759~hmac=4418879538c7e19229818b053dbb9c31379a463b1b2d2777c4264a7bea4c04ed&w=740"
         },
         {
             "id": "3-seats",
             "value": 3,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-3.jpg"
+            "img": "https://img.freepik.com/free-vector/fairytale-carriage-concept_23-2148470817.jpg?t=st=1711364702~exp=1711368302~hmac=419d288aaa2c6cff4f3d10448de73f84f2a0623becfeca8b94823cb412cf237c&w=740"
         },
         {
             "id": "4-seats",
             "value": 4,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-4.avif"
+            "img": "https://img.freepik.com/free-vector/modern-red-urban-adventure-suv-vehicle-illustration_1344-195.jpg?t=st=1711365797~exp=1711369397~hmac=4a18530cb627a3afac97de2b43f8de32d3c08f1911f977c1f599ea57fa915868&w=740"
         },
         {
             "id": "5-seats",
             "value": 5,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-5.avif"
+            "img": "https://img.freepik.com/free-vector/modern-red-urban-adventure-suv-vehicle-illustration_1344-195.jpg?t=st=1711365797~exp=1711369397~hmac=4a18530cb627a3afac97de2b43f8de32d3c08f1911f977c1f599ea57fa915868&w=740"
         },
         {
             "id": "6-seats",
             "value": 6,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-6.jpg"
+            "img": "https://img.freepik.com/free-vector/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg?t=st=1711364953~exp=1711368553~hmac=51145e01e59d44f55197f7b6976757d85bc23e42140e72c5f2a85f7ce2c79c22&w=740"
         },
         {
             "id": "7-seats",
             "value": 7,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-7.jpg"
+            "img": "https://img.freepik.com/free-vector/modern-urban-adventure-suv-vehicle-illustration_1344-200.jpg?t=st=1711364953~exp=1711368553~hmac=51145e01e59d44f55197f7b6976757d85bc23e42140e72c5f2a85f7ce2c79c22&w=740"
         },
         {
             "id": "8-seats",
             "value": 8,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-8.avif"
+            "img": "https://img.freepik.com/free-psd/realistic-car-illustration_23-2151227617.jpg?t=st=1711365629~exp=1711369229~hmac=6586b822c8a376c96b44735fc42d810620a5a3a38e54bc52f21257bf5fa1e3da&w=740"
         },
         {
             "id": "9-seats",
             "value": 9,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-9.avif"
+            "img": "https://img.freepik.com/free-psd/realistic-car-illustration_23-2151227617.jpg?t=st=1711365629~exp=1711369229~hmac=6586b822c8a376c96b44735fc42d810620a5a3a38e54bc52f21257bf5fa1e3da&w=740"
         },
         {
             "id": "10-seats",
             "value": 10,
             "active": false,
-            "img": "https://projectalpha9216.blob.core.windows.net/project-alpha/Images/cart-10.avif"
+            "img": "https://img.freepik.com/free-vector/hand-drawn-illustrated-transport-truck_23-2149160474.jpg?t=st=1711365709~exp=1711369309~hmac=6411e2209c5a02ecda5de423989f7390c68ca68029692afb6ae5854c0cd11929&w=740"
         }
     ]
 }
