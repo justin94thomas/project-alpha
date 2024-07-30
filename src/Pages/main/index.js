@@ -1,4 +1,3 @@
-// Layout.js
 import { Box, Grid, useMediaQuery } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTheme } from '@mui/material/styles';
@@ -32,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Layout() {
+const Main = () => {
     const classes = useStyles();
     const [loading, setLoading] = useState(false);
     const theme = useTheme();
@@ -65,4 +64,4 @@ function Layout() {
     );
 }
 
-export default Layout;
+export default Main;

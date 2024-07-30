@@ -1,7 +1,7 @@
 // EntryPoint.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Layout from './Pages/main/index.js';
+import Main from './Pages/main';
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
@@ -18,7 +18,7 @@ function EntryPoint() {
     return (
         <Router>
             <Redirect exact from='/' to='/dashboard' />
-            <Route path="/" component={Layout} />
+            <Route path="/" component={Main} />
         </Router>
     );
 }
