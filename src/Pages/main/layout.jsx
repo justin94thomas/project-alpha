@@ -9,9 +9,9 @@ import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
 import Routes from '../../Setup/routes-manager/routes.json';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
-const Dashboard = React.lazy(() => import('../Dashboard'));
-const Marketplace = React.lazy(() => import('../Marketplace'));
-const Blockbuster = React.lazy(() => import('../Blockbuster'));
+const Dashboard = React.lazy(() => import('../Dashboard/index'));
+const Marketplace = React.lazy(() => import('../Marketplace/index'));
+const Blockbuster = React.lazy(() => import('../Blockbuster/index'));
 
 const useStyles = makeStyles((theme) => ({
     mainWrapper: {
