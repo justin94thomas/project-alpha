@@ -40,7 +40,7 @@ const BlockbusterDashboard = ({ handleSelectedMovie }) => {
     const classes = useStyles();
     const [inTheaters, setInTheaters] = useState([]);
     const [upcommingMovies, setUpcommingMovies] = useState([]);
-    const { state, dispatch } = useBlockbusterContext();
+    const { state } = useBlockbusterContext();
 
     useEffect(() => {
         if (state?.movies) {

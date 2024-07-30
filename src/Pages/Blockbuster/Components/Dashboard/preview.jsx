@@ -99,8 +99,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 const BlockbusterPreview = ({ watchOnline, handleBookTickets }) => {
     const classes = useStyles();
-    const { state, dispatch } = useBlockbusterContext();
-    const [selectedMovie, setSelectedMovie] = useState(state.selectedMovie);
+    const { state } = useBlockbusterContext();
+    const [selectedMovie] = useState(state.selectedMovie);
     const { RatingsStarIcon, VideoRuntime, AccountCircleIcon } = icons;
 
     return (

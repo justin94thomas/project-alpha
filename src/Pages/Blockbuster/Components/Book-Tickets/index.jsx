@@ -91,10 +91,10 @@ const useStyles = makeStyles((theme) => ({
 
 const BookTickets = ({ ticketsConfirmed }) => {
     const classes = useStyles();
-    const { VideoRuntime, Seat } = icons;
+    const { VideoRuntime } = icons;
     const { state, dispatch } = useBlockbusterContext();
-    const [selectedSeats, setSelectedSeats] = useState(state.seats);
-    const [selectedMovie, setSelectedMovie] = useState(state.selectedMovie);
+    const [selectedSeats] = useState(state.seats);
+    const [selectedMovie] = useState(state.selectedMovie);
     const [activeSeat, setActiveSeat] = useState();
     const [dialogOpen, setDialogOpen] = useState(false);
     const [openSeatSelection, setOpenSeatSelection] = useState(false);
@@ -144,7 +144,7 @@ const BookTickets = ({ ticketsConfirmed }) => {
                     <Grid item lg={12} className={classes.movieHeaders}>
                         <Grid container lg={12} style={{ borderBottom: '1px solid #ccc', padding: 10 }}>
                             <Grid item style={{ marginLeft: 10 }}>
-                                <img src={selectedMovie.image} width={100} />
+                                <img src={selectedMovie.image} alt='movie-img' width={100} />
                             </Grid>
                             <Grid item style={{ marginLeft: 30 }}>
                                 <Typography className={classes.movieTitle}>{selectedMovie.title}</Typography>
@@ -179,7 +179,7 @@ const BookTickets = ({ ticketsConfirmed }) => {
                     <Grid container style={{ marginTop: 40, textAlign: '-webkit-center' }}>
                         <Grid item lg={12}>
                             <Typography>How many seats?</Typography>
-                            <img src={activeSeat?.img} width={200} />
+                            <img src={activeSeat?.img} width={200} alt='active-seats' />
                         </Grid>
                         <Grid item lg={12}>
                             <ul className={classes.seatMain}>

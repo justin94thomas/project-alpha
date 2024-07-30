@@ -89,7 +89,7 @@ const InTheaters = ({ movieData, handleSelectedMovie }) => {
                             return <Grid item className={classes.movieBox} key={index} onClick={() => handleSelectedMovie(item)}>
                                 <div style={{ borderRadius: '4px' }}>
                                     <Box className={classes.cardImgBox}>
-                                        <img src={item.image} className={classes.movieImg} />
+                                        <img src={item.image} className={classes.movieImg} alt='movie-img' />
                                     </Box>
                                     <Box className={classes.itemDetails}>
                                         <Typography variant='p' className={classes.movieName}>{item.title}</Typography>

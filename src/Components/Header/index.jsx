@@ -55,7 +55,6 @@ const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const { AccountCircleIcon, AlphaLogo } = icons;
-    const { } = images;
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 

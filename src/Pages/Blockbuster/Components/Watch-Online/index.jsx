@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 const WatchOnline = ({ closePreview }) => {
     const classes = useStyles();
     const { Close } = icons;
-    const { state, dispatch } = useBlockbusterContext();
+    const { state } = useBlockbusterContext();
     const [url, setUrl] = useState('');
 
     useEffect(() => {
