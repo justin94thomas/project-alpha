@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductCard = ({ productData }) => {
     const classes = useStyles();
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
     const { state, dispatch } = useMarketplaceContext();
 
     const handleAddToCart = (item) => {
