@@ -1,7 +1,7 @@
 // EntryPoint.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Layout from './Pages/main/layout';
+import Layout from './Pages/main/index.js';
 
 export const ProtectedRoute = ({ component: Component, ...rest }) => {
     return (
