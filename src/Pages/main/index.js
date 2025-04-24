@@ -8,7 +8,7 @@ import Header from "../../Components/Header";
 import Loader from '../../Components/Loader';
 import Routes from '../../Setup/routes-manager/routes.json';
 import { ErrorFallback } from '../../Utils/ErrorBoundary';
-const Dashboard = React.lazy(() => import('../Dashboard'));
+const Dashboard = React.lazy(() => import('../dashboard/index'));
 const Marketplace = React.lazy(() => import('../Marketplace'));
 const Blockbuster = React.lazy(() => import('../Blockbuster'));
 
